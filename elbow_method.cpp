@@ -29,7 +29,7 @@ int main() {
 
             }
             getline(ss, value, ',');
-                        try{
+            try{
                 double number_y = stod(value);
                 y.push_back(number_y);
             }catch (const invalid_argument& e) {
