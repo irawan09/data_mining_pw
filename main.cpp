@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
-#include "Cosine_similarity.h"
+#include "cosine_similarity.h"
+#include "euclidean_distance.h"
 
 using namespace std;
 
@@ -19,6 +20,11 @@ int main(){
     double cosine_sim = cos.cosine_similarity(a, b);
 
     cout << "Cosine similarity: " << cosine_sim << endl;
+
+    EuclideanDistance eucd;
+    double distance = eucd.euclidean_distance(a, b);
+    
+    cout << "The Euclidean distance between the vectors is " << distance << endl;
 
     return 0;
 }
