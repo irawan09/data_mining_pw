@@ -26,5 +26,18 @@ int main(){
     
     cout << "The Euclidean distance between the vectors is " << distance << endl;
 
+    cout << "Original vector: ";
+    for (double d : a) {
+        cout << d << " ";
+    }
+    cout << endl;
+
+    cout<<"Normalized Vector : "<<"\n";
+    vector<double> normalize = eucd.normalize(a);
+    for (double d : normalize){
+        cout<< d << " ";
+    }
+    cout<< endl;
+
     return 0;
 }

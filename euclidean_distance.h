@@ -7,6 +7,18 @@ using namespace std;
 class EuclideanDistance{
     public :
 
+        vector<double> normalize(vector<double> v) {
+            double length = 0.0;
+            for (double d : v) {
+                length += d * d;
+            }
+            length = sqrt(length);
+            for (double& d : v) {
+                d /= length;
+            }
+            return v;
+        }
+
         double euclidean_distance(const vector<double>& v1, const vector<double>& v2) {
             if (v1.size() != v2.size()) {
                 throw runtime_error("Vectors must have the same dimensionality");
