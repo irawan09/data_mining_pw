@@ -15,7 +15,7 @@ int main() {
     string line;
 
     // open CSV file
-    fstream file ("coba.csv", ios::in);
+    fstream file ("test.csv", ios::in);
     if (file.is_open()) {
         // read data from CSV file
         while (getline(file, line)) {
@@ -52,7 +52,6 @@ int main() {
         // initialize centroids
         for (int i = 0; i < k; i++) {
             centroids[i] = y[i];
-            
         }
 
         // calculate WCSS for current number of clusters

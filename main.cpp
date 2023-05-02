@@ -2,6 +2,7 @@
 #include <iostream>
 #include "cosine_similarity.h"
 #include "euclidean_distance.h"
+#include "read_csv.h"
 
 using namespace std;
 
@@ -38,6 +39,19 @@ int main(){
         cout<< d << " ";
     }
     cout<< endl;
+
+    ReadCSV read;
+    cout<<" Read CSV "<< endl;
+    vector< vector<double> > data = read.read_file("coba.csv");
+    
+    for(int i=0;i<data.size();i++)
+	{
+		for(int j=0;j<data[i].size();j++)
+		{
+			cout<<data[i][j]<<" ";
+		}
+		cout<<"\n";
+	}
 
     return 0;
 }
