@@ -28,13 +28,13 @@ int main(){
     cout << "The Euclidean distance between the vectors is " << distance << endl;
 
     cout << "Original vector: ";
-    for (double d : a) {
+    for (double d : b) {
         cout << d << " ";
     }
     cout << endl;
 
     cout<<"Normalized Vector : "<<"\n";
-    vector<double> normalize = eucd.normalize(a);
+    vector<double> normalize = eucd.normalize(b);
     for (double d : normalize){
         cout<< d << " ";
     }
