@@ -42,7 +42,7 @@ int main(){
 
     ReadCSV read;
     cout<<" Read CSV "<< endl;
-    vector< vector<double> > data = read.read_file("coba.csv");
+    vector< vector<double> > data = read.read_file("small.csv");
     
     for(int i=0;i<data.size();i++)
 	{

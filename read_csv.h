@@ -33,9 +33,9 @@ class ReadCSV{
                     }catch (const invalid_argument& e) {
 
                     }
-                    content.push_back(x);
-                    content.push_back(y);
                 }
+                content.push_back(x);
+                content.push_back(y);
             } else {
                 cout<<"Could not open the file \n";
             }
