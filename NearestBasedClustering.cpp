@@ -158,12 +158,15 @@ int main() {
     assignClusters(graph, clusters);
 
     // Output
-    printClusters(data, clusters);
+    // printClusters(data, clusters);
 
     int i = 1;
     for (const Cluster& cluster : clusters) {
         cout<<"Size cluster "<<i<<" : "<<cluster.size()<<endl;
         i++;
+        for(int j : cluster){
+            cout<<"Index Data : "<<j<<endl;
+        }
     }
 
     return 0;
