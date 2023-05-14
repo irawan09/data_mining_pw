@@ -45,13 +45,13 @@ void buildGraph(const vector<DataPoint>& data, double r, Graph& graph) {
 // Assigns data points to clusters based on the graph
 void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
     // Visualize the graph
-    for(int l=0; l< graph.size(); l++){
-        cout<<"Node number "<<l<<" : ";
-        for(int m=0; m<graph[l].size(); m++){
-            cout<<graph[l][m]<<", " ;
-        }
-        cout<< endl;
-    }
+    // for(int l=0; l< graph.size(); l++){
+    //     cout<<"Node number "<<l<<" : ";
+    //     for(int m=0; m<graph[l].size(); m++){
+    //         cout<<graph[l][m]<<", " ;
+    //     }
+    //     cout<< endl;
+    // }
 
     int n = graph.size();
     vector<bool> visited(n, false);
@@ -72,7 +72,7 @@ void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
         double ndf;
         ndf = count_rknn/size_knn;
         if( ndf >= 1){
-            cout<<"Point "<<i<<" is core point"<< endl;
+            // cout<<"Point "<<i<<" is core point"<< endl;
             if(!visited[i]){
                 visited[i] = true;
                 Cluster cluster;
@@ -85,15 +85,16 @@ void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
                     }
                 }
 
-                for (auto j : cluster){
-                    cout<<"cluster no "<<i<<" : "<<j<< endl; 
-                }
+                // for (auto j : cluster){
+                //     cout<<"cluster no "<<i<<" : "<<j<< endl; 
+                // }
 
                 clusters.push_back(cluster);
             }    
-        } else{
-            cout<<"Point "<<i<<" is not core point"<< endl;
-        }
+        } 
+        // else{
+            // cout<<"Point "<<i<<" is not core point"<< endl;
+        // }
     }
 }
 
@@ -158,6 +159,12 @@ int main() {
 
     // Output
     printClusters(data, clusters);
+
+    int i = 1;
+    for (const Cluster& cluster : clusters) {
+        cout<<"Size cluster "<<i<<" : "<<cluster.size()<<endl;
+        i++;
+    }
 
     return 0;
 }
