@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <set>
 #include <cmath>
+#include "euclidean_distance.h"
 
 using namespace std;
 
