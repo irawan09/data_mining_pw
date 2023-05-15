@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <set>
 #include <cmath>
-#include "euclidean_distance.h"
 
 using namespace std;
 
@@ -15,6 +14,43 @@ typedef set<int> Cluster;
 
 // A graph is represented as an adjacency list
 typedef vector< vector<int> > Graph;
+
+// Function to normalize data using min-max normalization
+vector<DataPoint> normalizeData(const vector<DataPoint>& data) {
+    vector<DataPoint> normalizedData;
+    vector<double> x_vect, y_vect; 
+    double minValX, maxValX, minValY, maxValY;
+    DataPoint normalizedVec;
+
+    // extracting the vector data
+    for (const auto& vec : data) {
+        double x = vec[0].first;
+        x_vect.push_back(x);
+        double y = vec[0].second;
+        y_vect.push_back(y);
+    }
+
+    // Find the minimum and maximum values within each vector
+    minValX = *min_element(x_vect.begin(), x_vect.end());
+    maxValX = *max_element(x_vect.begin(), x_vect.end());
+    minValY = *min_element(y_vect.begin(), y_vect.end());
+    maxValY = *max_element(y_vect.begin(), y_vect.end());
+    
+    // Normalize each data point within the vector
+    for (const auto& vec : data) {        
+        for (const auto& pair : vec) {
+            double normalizedValX = (pair.first - minValX) / (maxValX - minValX);
+            double normalizedValY = (pair.second - minValY) / (maxValY - minValY);
+            // cout<<"Normalized Value : "<<normalizedValY<<endl;
+            normalizedVec.push_back(make_pair(normalizedValX, normalizedValY));
+            // cout<<normalizedVec.size()<<endl;
+        }
+    }
+    normalizedData.push_back(normalizedVec);
+    // cout<<normalizedData.size()<<endl;
+    
+    return normalizedData;
+}
 
 // Returns the Euclidean distance between two data points
 double distance(const DataPoint& p1, const DataPoint& p2) {
@@ -28,8 +64,10 @@ double distance(const DataPoint& p1, const DataPoint& p2) {
     return sqrt(d);
 }
 
-// Builds a graph based on the RNC algorithm
+// Builds a graph based on the NBC algorithm
 void buildGraph(const vector<DataPoint>& data, double r, Graph& graph) {
+    vector<DataPoint> norm_data = normalizeData(data);
+
     int n = data.size();
     graph.resize(n);
     for (int i = 0; i < n; i++) {
@@ -150,7 +188,7 @@ int main() {
     data.push_back(data_point15);
 
     // Parameters
-    double r = 5.5;
+    double r = 0.2;
 
     // Clustering
     Graph graph;
@@ -161,14 +199,14 @@ int main() {
     // Output
     // printClusters(data, clusters);
 
-    int i = 1;
-    for (const Cluster& cluster : clusters) {
-        cout<<"Size cluster "<<i<<" : "<<cluster.size()<<endl;
-        i++;
-        for(int j : cluster){
-            cout<<"Index Data : "<<j<<endl;
-        }
-    }
+    // int i = 1;
+    // for (const Cluster& cluster : clusters) {
+    //     cout<<"Size cluster "<<i<<" : "<<cluster.size()<<endl;
+    //     i++;
+    //     for(int j : cluster){
+    //         cout<<"Index Data : "<<j<<endl;
+    //     }
+    // }
 
     return 0;
 }
