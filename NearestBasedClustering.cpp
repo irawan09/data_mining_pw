@@ -155,6 +155,29 @@ void printClusters(const vector<DataPoint>& data, const vector<Cluster>& cluster
     }
 }
 
+// Function to calculate the Rand index
+double calculateRandIndex(const vector<int>& clusterLabels, const vector<int>& trueLabels) {
+    int n = clusterLabels.size();
+    int a = 0, b = 0, c = 0, d = 0;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (clusterLabels[i] == clusterLabels[j] && trueLabels[i] == trueLabels[j]) {
+                a++;
+            } else if (clusterLabels[i] != clusterLabels[j] && trueLabels[i] != trueLabels[j]) {
+                b++;
+            } else if (clusterLabels[i] == clusterLabels[j] && trueLabels[i] != trueLabels[j]) {
+                c++;
+            } else if (clusterLabels[i] != clusterLabels[j] && trueLabels[i] == trueLabels[j]) {
+                d++;
+            }
+        }
+    }
+
+    double randIndex = static_cast<double>(a + b) / (a + b + c + d);
+    return randIndex;
+}
+
 int main() {
     // Sample data
     vector<DataPoint> data;
@@ -191,7 +214,7 @@ int main() {
     data.push_back(data_point15);
 
     // Parameters
-    double r = 10.2;
+    double r = 5.2;
 
     // Clustering
     Graph graph;
@@ -202,14 +225,48 @@ int main() {
     // Output
     // printClusters(data, clusters);
 
+    vector<int> pred_clust(data.size(), 0);
+    vector<int> true_clust;
+
     int i = 1;
     for (const Cluster& cluster : clusters) {
-        cout<<"Size cluster "<<i<<" : "<<cluster.size()<<endl;
+        int cluster_size = cluster.size();
+        cout<<"Size cluster "<<i<<" : "<<cluster_size<<endl;
+        if(cluster_size>0){
+            for(int k : cluster){
+                pred_clust[k] = i;
+            }
+        }
         i++;
         for(int j : cluster){
             cout<<"Index Data : "<<j<<endl;
         }
     }
+
+    cout<<"Predicted Cluster : "<<endl;
+    for (int i = 0; i < pred_clust.size(); ++i) {
+        cout<<"Index Data "<<i<<" is cluster "<< pred_clust[i] << endl;
+    }
+
+    true_clust.push_back(1);
+    true_clust.push_back(1);
+    true_clust.push_back(1);
+    true_clust.push_back(1);
+    true_clust.push_back(1);
+    true_clust.push_back(2);
+    true_clust.push_back(1);
+    true_clust.push_back(1);
+    true_clust.push_back(2);
+    true_clust.push_back(2);
+    true_clust.push_back(1);
+    true_clust.push_back(2);
+    true_clust.push_back(3);
+    true_clust.push_back(3);
+    true_clust.push_back(3);
+
+    //Using RAND index for the clustering evaluation
+    double rand_index = calculateRandIndex(pred_clust, true_clust);
+    cout<<"RAND index value : "<<rand_index<<endl;
 
     return 0;
 }
