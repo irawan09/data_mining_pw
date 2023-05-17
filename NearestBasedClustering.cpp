@@ -76,7 +76,10 @@ void buildGraph(const vector<DataPoint>& data, double r, Graph& graph) {
             if (d <= r) {
                 graph[i].push_back(j);
                 graph[j].push_back(i);
-            }
+            } 
+            // else {
+            //     cout<<"The distance is greater than the radius"<<endl;
+            // }
         }
     }
 }
@@ -132,7 +135,7 @@ void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
             }    
         } 
         // else{
-            // cout<<"Point "<<i<<" is not core point"<< endl;
+        //     cout<<"Point "<<i<<" is not core point"<< endl;
         // }
     }
 }
@@ -188,7 +191,7 @@ int main() {
     data.push_back(data_point15);
 
     // Parameters
-    double r = 0.2;
+    double r = 10.2;
 
     // Clustering
     Graph graph;
@@ -199,14 +202,14 @@ int main() {
     // Output
     // printClusters(data, clusters);
 
-    // int i = 1;
-    // for (const Cluster& cluster : clusters) {
-    //     cout<<"Size cluster "<<i<<" : "<<cluster.size()<<endl;
-    //     i++;
-    //     for(int j : cluster){
-    //         cout<<"Index Data : "<<j<<endl;
-    //     }
-    // }
+    int i = 1;
+    for (const Cluster& cluster : clusters) {
+        cout<<"Size cluster "<<i<<" : "<<cluster.size()<<endl;
+        i++;
+        for(int j : cluster){
+            cout<<"Index Data : "<<j<<endl;
+        }
+    }
 
     return 0;
 }
