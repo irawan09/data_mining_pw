@@ -1,3 +1,3 @@
 # Data Mining Politechnika Warszawska (Warsaw University of Technology)
 
-During this class we implemented some of machine learning algorithm using C++ programming language.
+During this class, we implemented some machine learning algorithms using the C++ programming language. Throughout the course, we were encouraged to work on real-world projects and apply what we learned to solve practical problems. This hands-on approach helped us gain a deeper understanding of machine learning concepts and a good understanding of how to construct problem-solving skills by constructing the algorithm. Overall, this class provided a solid foundation in machine learning and some algorithms that will be invaluable in my future career as a machine learning engineer. 
