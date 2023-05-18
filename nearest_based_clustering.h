@@ -157,6 +157,12 @@ double calculateRandIndex(const vector<int>& clusterLabels, const vector<int>& t
     int n = clusterLabels.size();
     int a = 0, b = 0, c = 0, d = 0;
 
+    // Make sure the input vectors have the same size
+    if (clusterLabels.size() != trueLabels.size()) {
+        cerr << "Error: true and predicted labels have different sizes!" << endl;
+        exit(1);
+    }
+
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
             if (clusterLabels[i] == clusterLabels[j] && trueLabels[i] == trueLabels[j]) {
