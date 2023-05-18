@@ -10,11 +10,11 @@ class NearestBasedClustering{
     public :
 
     // Function to normalize data using min-max normalization
-    vector<DataPoint> normalizeData(const vector<DataPoint>& data) {
-        vector<DataPoint> normalizedData;
+    vector< vector< pair<double, double> > > normalizeData(const vector< vector< pair<double, double> > >& data) {
+        vector< vector< pair<double, double> > > normalizedData;
         vector<double> x_vect, y_vect; 
         double minValX, maxValX, minValY, maxValY;
-        DataPoint normalizedVec;
+        vector< pair<double, double> > normalizedVec;
 
         // extracting the vector data
         for (const auto& vec : data) {
@@ -47,7 +47,7 @@ class NearestBasedClustering{
 }
 
 // Returns the Euclidean distance between two data points
-double distance(const DataPoint& p1, const DataPoint& p2) {
+double distance(const vector< pair<double, double> >& p1, const vector< pair<double, double> >& p2) {
     double d = 0;
     for (int i = 0; i < p1.size(); i++) {
         double x = p2[i].first - p1[i].first;
@@ -59,9 +59,9 @@ double distance(const DataPoint& p1, const DataPoint& p2) {
 }
 
 // Builds a graph based on the NBC algorithm
-vector< vector<int> > buildGraph(const vector<DataPoint>& data, double r, vector< vector<int> >& graph) {
+vector< vector<int> > buildGraph(const vector< vector< pair<double, double> > >& data, double r, vector< vector<int> >& graph) {
     vector< vector<int> > temp_graph;
-    vector<DataPoint> norm_data = normalizeData(data);
+    vector< vector< pair<double, double> > > norm_data = normalizeData(data);
 
     int n = data.size();
     temp_graph.resize(n);
@@ -114,7 +114,7 @@ vector< set<int> > assignClusters(const vector< vector<int> >& graph, vector< se
             // cout<<"Point "<<i<<" is core point"<< endl;
             if(!visited[i]){
                 visited[i] = true;
-                Cluster cluster;
+                set<int> cluster;
                 cluster.insert(i);
                 visited[i] = true;
                 for (double j : graph[i]) {
@@ -138,9 +138,9 @@ vector< set<int> > assignClusters(const vector< vector<int> >& graph, vector< se
 }
 
 // Prints the clusters
-void printClusters(const vector<DataPoint>& data, const vector<Cluster>& clusters) {
+void printClusters(const vector< vector< pair<double, double> > >& data, const vector< set<int> >& clusters) {
     int i = 1;
-    for (const Cluster& cluster : clusters) {
+    for (const set<int>& cluster : clusters) {
         cout << "Cluster " << i++ << ":" << endl;
         for (int j : cluster) {
             cout << "(";
