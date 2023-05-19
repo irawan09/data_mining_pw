@@ -18,7 +18,7 @@ typedef vector< vector<int> > Graph;
 
 // Function to normalize data using min-max normalization
 vector<DataPoint> normalizeData(const vector<DataPoint>& data) {
-     vector<DataPoint> normalizedData;
+    vector<DataPoint> normalizedData;
     vector<double> x_vect, y_vect; 
     double minValX, maxValX, minValY, maxValY;
     DataPoint normalizedVec;
@@ -46,13 +46,8 @@ vector<DataPoint> normalizeData(const vector<DataPoint>& data) {
         for (const auto& pair : vec) {
             double normalizedValX = (pair.first - minValX) / (maxValX - minValX);
             double normalizedValY = (pair.second - minValY) / (maxValY - minValY);
-            if(normalizedVec.size() == 0){
-                normalizedVec.push_back(make_pair(normalizedValX, normalizedValY));
-            } 
-            else {
-                normalizedVec.clear();
-                normalizedVec.push_back(make_pair(normalizedValX, normalizedValY));
-            }
+            normalizedVec.clear();
+            normalizedVec.push_back(make_pair(normalizedValX, normalizedValY));
             normalizedData.push_back(normalizedVec);
             p++;
         }
