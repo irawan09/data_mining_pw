@@ -18,10 +18,12 @@ typedef vector< vector<int> > Graph;
 
 // Function to normalize data using min-max normalization
 vector<DataPoint> normalizeData(const vector<DataPoint>& data) {
-    vector<DataPoint> normalizedData;
+     vector<DataPoint> normalizedData;
     vector<double> x_vect, y_vect; 
     double minValX, maxValX, minValY, maxValY;
     DataPoint normalizedVec;
+    DataPoint temp_normalizedVec;
+    pair<double, double> normalizedPair;
 
     // extracting the vector data
     for (const auto& vec : data) {
@@ -36,19 +38,25 @@ vector<DataPoint> normalizeData(const vector<DataPoint>& data) {
     maxValX = *max_element(x_vect.begin(), x_vect.end());
     minValY = *min_element(y_vect.begin(), y_vect.end());
     maxValY = *max_element(y_vect.begin(), y_vect.end());
+
+    int p = 0;
     
     // Normalize each data point within the vector
     for (const auto& vec : data) {        
         for (const auto& pair : vec) {
             double normalizedValX = (pair.first - minValX) / (maxValX - minValX);
             double normalizedValY = (pair.second - minValY) / (maxValY - minValY);
-            // cout<<"Normalized Value : "<<normalizedValY<<endl;
-            normalizedVec.push_back(make_pair(normalizedValX, normalizedValY));
-            // cout<<normalizedVec.size()<<endl;
+            if(normalizedVec.size() == 0){
+                normalizedVec.push_back(make_pair(normalizedValX, normalizedValY));
+            } 
+            else {
+                normalizedVec.clear();
+                normalizedVec.push_back(make_pair(normalizedValX, normalizedValY));
+            }
+            normalizedData.push_back(normalizedVec);
+            p++;
         }
     }
-    normalizedData.push_back(normalizedVec);
-    // cout<<normalizedData.size()<<endl;
     
     return normalizedData;
 }
@@ -69,18 +77,15 @@ double distance(const DataPoint& p1, const DataPoint& p2) {
 void buildGraph(const vector<DataPoint>& data, double r, Graph& graph) {
     vector<DataPoint> norm_data = normalizeData(data);
 
-    int n = data.size();
+    int n = norm_data.size();
     graph.resize(n);
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
-            double d = distance(data[i], data[j]);
+            double d = distance(norm_data[i], norm_data[j]);
             if (d <= r) {
                 graph[i].push_back(j);
                 graph[j].push_back(i);
             } 
-            // else {
-            //     cout<<"The distance is greater than the radius"<<endl;
-            // }
         }
     }
 }
@@ -127,10 +132,6 @@ void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
                         cluster.insert(j);
                     }
                 }
-
-                // for (auto j : cluster){
-                //     cout<<"cluster no "<<i<<" : "<<j<< endl; 
-                // }
 
                 clusters.push_back(cluster);
             }    
@@ -182,43 +183,48 @@ double calculateRandIndex(const vector<int>& clusterLabels, const vector<int>& t
 int main() {
     // Sample data
     vector<DataPoint> data;
-    DataPoint data_point1, data_point2, data_point3, data_point4, data_point5, data_point6, data_point7, data_point8, data_point9, data_point10, data_point11, data_point12, data_point13, data_point14, data_point15;
-    data_point1.push_back(pair<double, double>(1.1, 2.3));
+    DataPoint data_point1, data_point2, data_point3, data_point4, data_point5, 
+    data_point6, data_point7, data_point8, data_point9, data_point10, 
+    data_point11, data_point12;
+    //  data_point13, data_point14, data_point15;
+
+    data_point1.push_back(pair<double, double>(4.2, 4.0));
     data.push_back(data_point1);
-    data_point2.push_back(pair<double, double>(2.2, 1.9));
+    data_point2.push_back(pair<double, double>(5.9, 3.9));
     data.push_back(data_point2);
-    data_point3.push_back(pair<double, double>(2.3, 3.5));
+    data_point3.push_back(pair<double, double>(2.8, 3.5));
     data.push_back(data_point3);
-    data_point4.push_back(pair<double, double>(3.7, 3.8));
+    data_point4.push_back(pair<double, double>(12.0, 1.3));
     data.push_back(data_point4);
-    data_point5.push_back(pair<double, double>(4.7, 4.1));
+    data_point5.push_back(pair<double, double>(10.0, 1.3));
     data.push_back(data_point5);
-    data_point6.push_back(pair<double, double>(5.6, 5.1));
+    data_point6.push_back(pair<double, double>(1.1, 3.0));
     data.push_back(data_point6);
-    data_point7.push_back(pair<double, double>(5.9, 6.5));
+    data_point7.push_back(pair<double, double>(0.0, 2.4));
     data.push_back(data_point7);
-    data_point8.push_back(pair<double, double>(5.0, 5.0));
+    data_point8.push_back(pair<double, double>(2.4, 2.0));
     data.push_back(data_point8);
-    data_point9.push_back(pair<double, double>(7.0, 7.0));
+    data_point9.push_back(pair<double, double>(11.5, 1.8));
     data.push_back(data_point9);
-    data_point10.push_back(pair<double, double>(8.0, 8.0));
+    data_point10.push_back(pair<double, double>(11.0, 1.0));
     data.push_back(data_point10);
-    data_point11.push_back(pair<double, double>(8.6, 9.0));
+    data_point11.push_back(pair<double, double>(0.9, 0.0));
     data.push_back(data_point11);
-    data_point12.push_back(pair<double, double>(9.0, 8.0));
+    data_point12.push_back(pair<double, double>(1.0, 1.5));
     data.push_back(data_point12);
-    data_point13.push_back(pair<double, double>(15.0, 14.0));
-    data.push_back(data_point13);
-    data_point14.push_back(pair<double, double>(15.1, 14.4));
-    data.push_back(data_point14);
-    data_point15.push_back(pair<double, double>(15.9, 14.2));
-    data.push_back(data_point15);
+    // data_point13.push_back(pair<double, double>(15.0, 14.0));
+    // data.push_back(data_point13);
+    // data_point14.push_back(pair<double, double>(15.1, 14.4));
+    // data.push_back(data_point14);
+    // data_point15.push_back(pair<double, double>(15.9, 14.2));
+    // data.push_back(data_point15);
+
 
     // parameter for measure the computation time
     time_t start = clock();
 
-    // Parameters
-    double r = 5.2;
+    // Parameters radius point
+    double r = 0.938;
 
     // Clustering
     Graph graph;
@@ -256,20 +262,20 @@ int main() {
     }
 
     true_clust.push_back(1);
-    true_clust.push_back(1);
-    true_clust.push_back(1);
-    true_clust.push_back(1);
-    true_clust.push_back(1);
-    true_clust.push_back(2);
-    true_clust.push_back(1);
+    true_clust.push_back(0);
     true_clust.push_back(1);
     true_clust.push_back(2);
     true_clust.push_back(2);
     true_clust.push_back(1);
+    true_clust.push_back(1);
+    true_clust.push_back(1);
     true_clust.push_back(2);
-    true_clust.push_back(3);
-    true_clust.push_back(3);
-    true_clust.push_back(3);
+    true_clust.push_back(2);
+    true_clust.push_back(1);
+    true_clust.push_back(1);
+    // true_clust.push_back(3);
+    // true_clust.push_back(3);
+    // true_clust.push_back(3);
 
     //Using RAND index for the clustering evaluation
     double rand_index = calculateRandIndex(pred_clust, true_clust);
