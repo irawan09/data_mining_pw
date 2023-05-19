@@ -253,20 +253,20 @@ int main() {
 
     cout<<"Predicted Cluster : "<<endl;
     for (int i = 0; i < pred_clust.size(); ++i) {
-        cout<<"Index Data "<<i<<" is cluster "<< pred_clust[i] << endl;
+        cout<<"Index Data "<<i+1<<" is cluster "<< pred_clust[i] << endl;
     }
 
-    true_clust.push_back(1);
+    true_clust.push_back(1); 
     true_clust.push_back(0);
     true_clust.push_back(1);
-    true_clust.push_back(2);
-    true_clust.push_back(2);
+    true_clust.push_back(1);
+    true_clust.push_back(1);
+    true_clust.push_back(1);
     true_clust.push_back(1);
     true_clust.push_back(1);
     true_clust.push_back(1);
     true_clust.push_back(2);
     true_clust.push_back(2);
-    true_clust.push_back(1);
     true_clust.push_back(1);
     // true_clust.push_back(3);
     // true_clust.push_back(3);
