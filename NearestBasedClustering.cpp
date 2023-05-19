@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <set>
 #include <cmath>
+#include <time.h>
 
 using namespace std;
 
@@ -213,6 +214,9 @@ int main() {
     data_point15.push_back(pair<double, double>(15.9, 14.2));
     data.push_back(data_point15);
 
+    // parameter for measure the computation time
+    time_t start = clock();
+
     // Parameters
     double r = 5.2;
 
@@ -225,6 +229,9 @@ int main() {
     // Output
     // printClusters(data, clusters);
 
+    time_t end = clock();
+    double elapsed = double(end - start)/ CLOCKS_PER_SEC;
+    
     vector<int> pred_clust(data.size(), 0);
     vector<int> true_clust;
 
@@ -267,6 +274,8 @@ int main() {
     //Using RAND index for the clustering evaluation
     double rand_index = calculateRandIndex(pred_clust, true_clust);
     cout<<"RAND index value : "<<rand_index<<endl;
+    
+    cout<<"Computation Time : "<<elapsed<<" seconds"<<endl;
 
     return 0;
 }
