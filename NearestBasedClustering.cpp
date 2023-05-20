@@ -2,7 +2,6 @@
 #include <vector>
 #include <algorithm>
 #include <set>
-#include <tuple>
 #include <cmath>
 #include <time.h>
 
@@ -88,7 +87,7 @@ void buildGraph(const vector<DataPoint>& data, double r, Graph& graph) {
     //     }
     // }
 
-    // Triangle Inversion Property
+    // Triangle Inequality Property
     double epsilon = 0;
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
