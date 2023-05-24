@@ -22,7 +22,6 @@ vector<DataPoint> normalizeData(const vector<DataPoint>& data) {
     vector<double> x_vect, y_vect; 
     double minValX, maxValX, minValY, maxValY;
     DataPoint normalizedVec;
-    DataPoint temp_normalizedVec;
     pair<double, double> normalizedPair;
 
     // extracting the vector data
@@ -72,51 +71,50 @@ double distance(const DataPoint& p1, const DataPoint& p2) {
 void buildGraph(const vector<DataPoint>& data, double r, Graph& graph) {
     vector<DataPoint> norm_data = normalizeData(data);
 
-
     int n = norm_data.size();
     graph.resize(n);
 
-    // // Normal Euclidean Distance
-    // for (int i = 0; i < n; i++) {
-    //     for (int j = i + 1; j < n; j++) {
-    //         double d = distance(norm_data[i], norm_data[j]);
-    //         if (d <= r) {
-    //             graph[i].push_back(j);
-    //             graph[j].push_back(i);
-    //         } 
-    //     }
-    // }
-
-    // Triangle Inequality Property
-    double epsilon = 0;
+    // Normal Euclidean Distance
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
-            double d, dist1, dist2, dist3, distance4;
-
-            d = distance(norm_data[i], norm_data[j]);
-            // cout<<"distance data "<<i<<" and data "<<j<<" : "<<d<<endl;
-
-            dist1 = distance(norm_data[i], norm_data[0]);
-            // cout<<"Distance point "<<i<<" into reference point : "<<dist1<<endl;
-
-            dist2 = distance(norm_data[1], norm_data[i]);
-            // cout<<"Distance point "<<i<<" into reference point : "<<dist2<<endl;
-
-            if(epsilon == 0){
-                epsilon = max(dist1, dist2);
-                // cout<<"Epsilon value : "<<epsilon<<endl;
-            } else {
-                dist3 = distance(norm_data[j], norm_data[0]);
-                distance4 = dist1 - dist3;
-                if (distance4 < epsilon){
-                    epsilon = d;
-                    // cout<<"Epsilon value : "<<epsilon<<endl;
-                    graph[i].push_back(j);
-                    graph[j].push_back(i);
-                }
-            }
+            double d = distance(norm_data[i], norm_data[j]);
+            if (d <= r) {
+                graph[i].push_back(j);
+                graph[j].push_back(i);
+            } 
         }
     }
+
+    // // Triangle Inequality Property
+    // double epsilon = 0;
+    // for (int i = 0; i < n; i++) {
+    //     for (int j = i + 1; j < n; j++) {
+    //         double d, dist1, dist2, dist3, distance4;
+
+    //         d = distance(norm_data[i], norm_data[j]);
+    //         // cout<<"distance data "<<i<<" and data "<<j<<" : "<<d<<endl;
+
+    //         dist1 = distance(norm_data[i], norm_data[0]);
+    //         // cout<<"Distance point "<<i<<" into reference point : "<<dist1<<endl;
+
+    //         dist2 = distance(norm_data[1], norm_data[i]);
+    //         // cout<<"Distance point "<<i<<" into reference point : "<<dist2<<endl;
+
+    //         if(epsilon == 0){
+    //             epsilon = max(dist1, dist2);
+    //             // cout<<"Epsilon value : "<<epsilon<<endl;
+    //         } else {
+    //             dist3 = distance(norm_data[j], norm_data[0]);
+    //             distance4 = dist1 - dist3;
+    //             if (distance4 < epsilon){
+    //                 epsilon = d;
+    //                 cout<<"Epsilon value : "<<epsilon<<endl;
+    //                 graph[i].push_back(j);
+    //                 graph[j].push_back(i);
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 // Assigns data points to clusters based on the graph
