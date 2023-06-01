@@ -227,90 +227,91 @@ void buildGraph(const vector<DataPoint>& data, int k, Graph& graph) {
     // Graph represents the KNN value connected into the source points
     graph.resize(n);
 
-    vector<tuple<int, int, double>> database;
 
-    //create a distance database with source and destination point
-    for (int i = 0; i < n; i++) {
-        for (int j = i + 1; j < n; j++) {
-            double d = distanceVectorPair(norm_data[i], norm_data[j]);
-            database.push_back(make_tuple(i, j, d));
-        }
-    }
+    // // Normal Euclidean Distance
+    // vector<tuple<int, int, double>> database;
 
-    // Normal Euclidean Distance
-    vector<double> nearestDistances;
-    vector<int> duplicateIndex;
-
-    for (int i = 0; i < n; i++) {
-            pair<double, double> targetPoint;
-            DataPoint target_data = norm_data[i];
-
-            for (const auto& pair : target_data) {
-                targetPoint = make_pair(pair.first, pair.second);
-            }
-
-            nearestDistances = findNearestDistances(norm_data, targetPoint, k);
-
-            // Print the nearest distance
-            // cout<<"---------------"<<i<<"----------------"<<endl;
-            // for (const auto& pair : nearestDistances) {
-            //     cout<<"Nearest Distance : "<<pair<<endl;
-            // }
-            // cout<<"--------------------------------"<<endl;
-
-
-            for (const auto& targetValue : nearestDistances) {
-                double result = findValueAtIndex2(database, targetValue, i);
-                if (result != -1.0) {
-
-                    if (hasDuplicate(nearestDistances)){
-                        duplicateIndex = findValueDuplicates(database, nearestDistances);
-
-                        for(const auto& duplicate : duplicateIndex ){
-                            if (graph[i].size() < nearestDistances.size()){
-                                graph[i].push_back(duplicate);
-                            }
-                        }             
-                    } else {
-                         graph[i].push_back(result);
-                    }
-                } else {
-                    cout << "Target value " << targetValue << " not found." << endl;
-                }
-            }
-    }
-  
-
-    // // Triangle Inequality Property
-    // double epsilon = 0;
+    // //create a distance database with source and destination point
     // for (int i = 0; i < n; i++) {
     //     for (int j = i + 1; j < n; j++) {
-    //         double d, dist1, dist2, dist3, distance4;
-
-    //         d = distance(norm_data[i], norm_data[j]);
-    //         // cout<<"distance data "<<i<<" and data "<<j<<" : "<<d<<endl;
-
-    //         dist1 = distance(norm_data[i], norm_data[0]);
-    //         // cout<<"Distance point "<<i<<" into reference point : "<<dist1<<endl;
-
-    //         dist2 = distance(norm_data[1], norm_data[i]);
-    //         // cout<<"Distance point "<<i<<" into reference point : "<<dist2<<endl;
-
-    //         if(epsilon == 0){
-    //             epsilon = max(dist1, dist2);
-    //             // cout<<"Epsilon value : "<<epsilon<<endl;
-    //         } else {
-    //             dist3 = distance(norm_data[j], norm_data[0]);
-    //             distance4 = dist1 - dist3;
-    //             if (distance4 < epsilon){
-    //                 epsilon = d;
-    //                 cout<<"Epsilon value : "<<epsilon<<endl;
-    //                 graph[i].push_back(j);
-    //                 graph[j].push_back(i);
-    //             }
-    //         }
+    //         double d = distanceVectorPair(norm_data[i], norm_data[j]);
+    //         database.push_back(make_tuple(i, j, d));
     //     }
     // }
+
+    // vector<double> nearestDistances;
+    // vector<int> duplicateIndex;
+
+    // for (int i = 0; i < n; i++) {
+    //         pair<double, double> targetPoint;
+    //         DataPoint target_data = norm_data[i];
+
+    //         for (const auto& pair : target_data) {
+    //             targetPoint = make_pair(pair.first, pair.second);
+    //         }
+
+    //         nearestDistances = findNearestDistances(norm_data, targetPoint, k);
+
+    //         // Print the nearest distance
+    //         // cout<<"---------------"<<i<<"----------------"<<endl;
+    //         // for (const auto& pair : nearestDistances) {
+    //         //     cout<<"Nearest Distance : "<<pair<<endl;
+    //         // }
+    //         // cout<<"--------------------------------"<<endl;
+
+
+    //         for (const auto& targetValue : nearestDistances) {
+    //             double result = findValueAtIndex2(database, targetValue, i);
+    //             if (result != -1.0) {
+
+    //                 if (hasDuplicate(nearestDistances)){
+    //                     duplicateIndex = findValueDuplicates(database, nearestDistances);
+
+    //                     for(const auto& duplicate : duplicateIndex ){
+    //                         if (graph[i].size() < nearestDistances.size()){
+    //                             graph[i].push_back(duplicate);
+    //                         }
+    //                     }             
+    //                 } else {
+    //                      graph[i].push_back(result);
+    //                 }
+    //             } else {
+    //                 cout << "Target value " << targetValue << " not found." << endl;
+    //             }
+    //         }
+    // }
+  
+
+    // Triangle Inequality Property
+    double epsilon = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            double d, dist1, dist2, dist3, distance4;
+
+            d = distanceVectorPair(norm_data[i], norm_data[j]);
+            // cout<<"distance data "<<i<<" and data "<<j<<" : "<<d<<endl;
+
+            dist1 = distanceVectorPair(norm_data[i], norm_data[0]);
+            // cout<<"Distance point "<<i<<" into reference point : "<<dist1<<endl;
+
+            dist2 = distanceVectorPair(norm_data[1], norm_data[i]);
+            // cout<<"Distance point "<<i<<" into reference point : "<<dist2<<endl;
+
+            if(epsilon == 0){
+                epsilon = max(dist1, dist2);
+                // cout<<"Epsilon value : "<<epsilon<<endl;
+            } else {
+                dist3 = distanceVectorPair(norm_data[j], norm_data[0]);
+                distance4 = dist1 - dist3;
+                if (distance4 < epsilon){
+                    epsilon = d;
+                    // cout<<"Epsilon value : "<<epsilon<<endl;
+                    graph[i].push_back(j);
+                    graph[j].push_back(i);
+                }
+            }
+        }
+    }
 }
 
 // Assigns data points to clusters based on the graph
