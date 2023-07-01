@@ -424,15 +424,25 @@ int main(){
     vector<int> pred_clust(dataFromCSV.size(), 0);
     vector<int> true_clust;
 
-    // for(int i=0; i< clusters.size();i++) {
-    //     set<int> :: iterator iter;
-    //     for (iter = clusters[i].begin(); iter != clusters[i].end(); iter++) {
-    //         cout<< "Node "<<i<<" : cluster "<<*iter << endl;
-    //         pred_clust[i] = *iter;
-    //     }
-    // }
+    ofstream results("results.txt"); 
 
-    string clusterfile = "/home/irawan/Documents/WUT/Data Mining/update_project/small_dataset_clusters.csv";
+    if (results.is_open()) {
+
+        for(int i=0; i< clusters.size();i++) {
+            set<int> :: iterator iter;
+            for (iter = clusters[i].begin(); iter != clusters[i].end(); iter++) {
+                results<<*iter << endl;
+                pred_clust[i] = *iter;
+            }
+        }
+
+        results.close();
+        cout << "File OUT.txt created successfully." <<endl;
+    } else {
+        cout << "Failed to create file OUT.txt" <<endl;
+    }
+
+    string clusterfile = "/home/irawan/Documents/WUT/Data\ Mining/update_project/output/results.txt";
     DataFromCSV dataClusters = readCSVFile(clusterfile);
 
     for(int i=0;i<dataClusters.size();i++){

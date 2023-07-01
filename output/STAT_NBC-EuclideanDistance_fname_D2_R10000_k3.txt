@@ -1,0 +1,3 @@
+k parameter : 3
+Total runtime : 0.000879 seconds
+RAND index value : 1

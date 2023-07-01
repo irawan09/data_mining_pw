@@ -1,0 +1,36 @@
+Data ID 0 KNN : 1, 2, 5, 
+RkNN of Data ID  0 : 2
+NDF of Data ID 0 : 0
+Data ID 1 KNN : 0, 2, 5, 
+RkNN of Data ID  1 : 2
+NDF of Data ID 1 : 0
+Data ID 2 KNN : 5, 0, 1, 
+RkNN of Data ID  2 : 3
+NDF of Data ID 2 : 1
+Data ID 3 KNN : 8, 9, 4, 
+RkNN of Data ID  3 : 3
+NDF of Data ID 3 : 1
+Data ID 4 KNN : 9, 8, 3, 
+RkNN of Data ID  4 : 3
+NDF of Data ID 4 : 1
+Data ID 5 KNN : 6, 2, 7, 
+RkNN of Data ID  5 : 4
+NDF of Data ID 5 : 1
+Data ID 6 KNN : 7, 5, 11, 
+RkNN of Data ID  6 : 4
+NDF of Data ID 6 : 1
+Data ID 7 KNN : 11, 6, 10, 
+RkNN of Data ID  7 : 4
+NDF of Data ID 7 : 1
+Data ID 8 KNN : 3, 9, 4, 
+RkNN of Data ID  8 : 3
+NDF of Data ID 8 : 1
+Data ID 9 KNN : 8, 4, 3, 
+RkNN of Data ID  9 : 3
+NDF of Data ID 9 : 1
+Data ID 10 KNN : 11, 7, 6, 
+RkNN of Data ID  10 : 2
+NDF of Data ID 10 : 0
+Data ID 11 KNN : 7, 10, 6, 
+RkNN of Data ID  11 : 3
+NDF of Data ID 11 : 1
