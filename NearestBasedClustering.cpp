@@ -1,89 +1,184 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 #include <vector>
-#include <algorithm>
-#include <set>
-#include <tuple>
-#include <map>
-#include <unordered_map>
+#include <sstream>
 #include <cmath>
-#include <time.h>
+#include <tuple>
+#include <chrono>
+#include <algorithm>
+#include <unordered_map>
+#include <set>
 #include <queue>
+#include <time.h>
 
 using namespace std;
 
-// A data point is represented as a vector of double values
-typedef vector< pair<double, double> > DataPoint;
-
-// A cluster is represented as a set of indices of data points
-typedef set<int> Cluster;
+typedef vector<vector<double>> DataFromCSV;
 
 // A graph is represented as an adjacency list
 typedef vector< vector<int> > Graph;
 
-// Function to normalize data using min-max normalization
-vector<DataPoint> normalizeData(const vector<DataPoint>& data) {
-    vector<DataPoint> normalizedData;
-    vector<double> x_vect, y_vect; 
-    double minValX, maxValX, minValY, maxValY;
-    DataPoint normalizedVec;
-    DataPoint temp_normalizedVec;
-    pair<double, double> normalizedPair;
+// A cluster is represented as a set of indices of data points
+typedef set<int> Cluster;
 
-    // extracting the vector data
-    for (const auto& vec : data) {
-        double x = vec[0].first;
-        x_vect.push_back(x);
-        double y = vec[0].second;
-        y_vect.push_back(y);
+// Normal Euclidean Distance database
+vector<tuple<int, int, double>> database;
+
+vector<bool> corePointStatus;
+
+int count_rknn;
+
+vector<vector<double>> readCSVFile(const string& filename) {
+    vector<vector<double>> columns;
+    ifstream file(filename);
+
+    if (!file.is_open()) {
+        cout << "Failed to open the CSV file" << endl;
+        return columns;
     }
 
-    // Find the minimum and maximum values within each vector
-    minValX = *min_element(x_vect.begin(), x_vect.end());
-    maxValX = *max_element(x_vect.begin(), x_vect.end());
-    minValY = *min_element(y_vect.begin(), y_vect.end());
-    maxValY = *max_element(y_vect.begin(), y_vect.end());
-    
-    // Normalize each data point within the vector
-    for (const auto& vec : data) {        
-        for (const auto& pair : vec) {
-            double normalizedValX = (pair.first - minValX) / (maxValX - minValX);
-            double normalizedValY = (pair.second - minValY) / (maxValY - minValY);
-            normalizedVec.clear();
-            normalizedVec.push_back(make_pair(normalizedValX, normalizedValY));
-            normalizedData.push_back(normalizedVec);
+    string line;
+    getline(file, line); // Read the first row (labels) and discard
+
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string cell;
+        size_t columnIndex = 0;
+
+        while (getline(ss, cell, ',')) {
+            // If it's the first row, add a new column vector
+            if (columns.size() <= columnIndex) {
+                columns.push_back(vector<double>());
+            }
+
+            // Convert the cell value to a double and add it to the respective column vector
+            double value = stod(cell);
+            columns[columnIndex].push_back(value);
+            columnIndex++;
         }
     }
-    
-    return normalizedData;
+
+    return columns;
 }
 
-bool comparePairs(const pair<int, double>& pair1, const pair<int, double>& pair2) {
-    return pair1.second < pair2.second;
+vector<vector<double>> normalizeData(const vector<vector<double>>& data){
+    size_t numColumns = data.size();
+    size_t numRows = data[0].size();
+
+    vector<vector<double>> normalizedColumns(numColumns, vector<double>(numRows, 0.0));
+
+    for (size_t i = 0; i < numColumns; i++) {
+        double magnitude = 0.0;
+
+        // Calculate the magnitude of the vector
+        for (size_t j = 0; j < numRows; j++) {
+            magnitude += pow(data[i][j], 2);
+        }
+
+        magnitude = sqrt(magnitude);
+
+        // Normalize each value in the column and convert to double
+        for (size_t j = 0; j < numRows; j++) {
+            normalizedColumns[i][j] = static_cast<double>(data[i][j]) / magnitude;
+        }
+    }
+
+    return normalizedColumns;
 }
 
-bool hasDuplicate(const vector<double>& distances) {
-    set<double> uniqueValues;
+double calculateEuclideanDistance(const vector<double>& point1, const vector<double>& point2) {
 
-    for (double value : distances) {
-        if (uniqueValues.find(value) != uniqueValues.end()) {
-            // Duplicate value found
+    if (point1.size() != point2.size()) {
+        throw invalid_argument("Vectors must have the same size");
+    }
+
+    double distance = 0.0;
+    size_t numFeatures = point1.size();
+
+    for (size_t i = 0; i < numFeatures; i++) {
+        double diff = pow(point1[i], 2) - pow(point2[i], 2);
+        distance += diff * diff;
+    }
+
+    return sqrt(distance);
+}
+
+bool hasDuplicate(const vector<double>& values) {
+    unordered_map<double, int> countMap;
+    for (const auto& value : values) {
+        countMap[value]++;
+        if (countMap[value] > 1) {
             return true;
         }
-        uniqueValues.insert(value);
     }
-
-    // No duplicate values found
     return false;
 }
 
-unordered_map<double, int> countDuplicates(const vector<double>& distances) {
+unordered_map<double, int> countDuplicates(const vector<double>& values) {
     unordered_map<double, int> countMap;
-
-    for (double value : distances) {
+    for (const auto& value : values) {
         countMap[value]++;
     }
-
     return countMap;
+}
+
+vector<double> extractColumn(const vector<vector<double>>& data, size_t column_index) {
+    vector<double> column;
+
+    if (!data.empty()) {
+        if (column_index < data[0].size()) {
+            for (const auto& row : data) {
+                column.push_back(row[column_index]);
+            }
+        } else {
+            throw invalid_argument("Invalid column index");
+        }
+    } else {
+        throw invalid_argument("Empty dataset");
+    }
+
+    return column;
+}
+
+vector<double> findNearestDistances(const vector<vector<double>>& data,
+                                         const vector<double>& targetPoint, size_t k) {
+    vector<double> distances;
+
+    try {
+        for (int i=0;i<data[0].size();i++) {
+            vector<double> innerVector = extractColumn(data, i);       
+            double distance = calculateEuclideanDistance(targetPoint, innerVector);
+            if (distance != 0) {
+                distances.push_back(distance);
+            }
+        }   
+    } catch (const exception& e) {
+        cout << "Error: " << e.what() << endl;
+    }
+
+    sort(distances.begin(), distances.end());
+
+    bool hasDuplicates = hasDuplicate(distances);
+
+    if (hasDuplicates) {
+        int number_of_duplicates;
+
+        unordered_map<double, int> duplicateCounts = countDuplicates(distances);
+
+        for (const auto& entry : duplicateCounts) {
+            if (entry.second > 1) {
+                number_of_duplicates = entry.second - 1;
+                distances.resize(k + number_of_duplicates);
+            }
+        }
+    } else {
+        if (distances.size() > k) {
+            distances.resize(k);
+        }
+    }
+
+    return distances;
 }
 
 double findValueAtIndex2(const vector<tuple<int, int, double>>& data, double target, int sourcePoint) {
@@ -92,15 +187,14 @@ double findValueAtIndex2(const vector<tuple<int, int, double>>& data, double tar
         if (valueAtIndex2 == target) {
             int destinationPoint = get<1>(tuple);
             if(sourcePoint == destinationPoint){
-                // cout<<"Index 0"<<endl;
-                //
                 return get<0>(tuple);
-            } 
-            // cout<<"Index 1"<<endl;
-            return  destinationPoint; // Return the value at index 1
+            }  
+            // Return the value at index 1
+            return  destinationPoint; 
         }
     }
-    return -1.0;  // Return a default value (-1.0) if target value is not found
+    // Return a default value (-1.0) if target value is not found
+    return -1.0;  
 }
 
 vector<int> findValueDuplicates(const vector<tuple<int, int, double>>& database, vector<double> targets) {
@@ -126,71 +220,72 @@ vector<int> findValueDuplicates(const vector<tuple<int, int, double>>& database,
     return results;
 }
 
-// Remove duplicates the value from the vector
-void removeDuplicates(vector<int>& vec) {
-    sort(vec.begin(), vec.end());
+void buildGraph(const vector<vector<double>>& data, int k, Graph& graph) {
+    vector<vector<double>> norm_data = normalizeData(data);
 
-    auto uniqueEnd = unique(vec.begin(), vec.end());
-    vec.erase(uniqueEnd, vec.end());
-}
+    // for(int i=0;i<norm_data.size();i++){
+    //     cout<<"Normalize data index "<<i<<" ";
+    //     for(int j=0;j<norm_data[i].size();j++){
+    //         cout<<norm_data[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
 
+    size_t n = norm_data[0].size();
+    
+    // Graph represents the KNN value connected into the source points
+    graph.resize(n);
 
-// Returns the Euclidean distance between two data points from vector nested with Pair data
-double distanceVectorPair(const DataPoint& p1, const DataPoint& p2) {
-    double d = 0;
-    for (int i = 0; i < p1.size(); i++) {
-        double x = p2[i].first - p1[i].first;
-        double y = p2[i].second - p1[i].second;
-        d += pow(x, 2) + pow(y, 2);
-        // cout<<"Euclidean Distance between ("<<p1[i].first<<","<<p1[i].second<<") and ("<<p2[i].first<<","<<p2[i].second<<"): "<<sqrt(d)<< endl;
-    }
-    return sqrt(d);
-}
-
-// Returns the Euclidean distance between two data points from Pair data
-double calculateDistancePair(const pair<double, double>& p1, const pair<double, double>& p2) {
-    double dx = p2.first - p1.first;
-    double dy = p2.second - p1.second;
-    return sqrt(dx * dx + dy * dy);
-}
-
-// To find the neareset distance between the target point and all the point in database
-vector<double> findNearestDistances(const vector<vector<pair<double, double>>>& data, const pair<double, double>& targetPoint, int k) {
-    vector<double> distances;
-
-    for (const auto& innerVector : data) {
-        for (const auto& point : innerVector) {
-            double distance = calculateDistancePair(targetPoint, point);
-            if (distance != 0){
-                distances.push_back(distance);
+    //create a distance database with source and destination point
+    try {
+        for (size_t i = 0; i < n; i++) {
+            for (size_t j = i + 1; j < n; j++) {
+                vector<double> row1 = extractColumn(norm_data, i);
+                vector<double> row2 = extractColumn(norm_data, j);
+                double d = calculateEuclideanDistance(row1, row2);
+                // cout<<"Distance of "<<i<<" towards "<<j<<" : "<<d<<endl;
+                database.push_back(make_tuple(i, j, d));
             }
         }
+    } catch (const exception& e) {
+        cout << "Error: " << e.what() << endl;
     }
 
-    sort(distances.begin(), distances.end());
+    vector<double> nearestDistances;
+    vector<int> duplicateIndex;
 
-    bool hasDuplicates = hasDuplicate(distances);
+    for (int i = 0; i < n; i++) {
+        vector<double> targetData = extractColumn(norm_data, i);
+                
+        nearestDistances = findNearestDistances(norm_data, targetData, k);
 
-    if (hasDuplicates) {
-        // cout << "There are duplicate values." << endl;
-        int number_of_duplicates;
+        // cout<<"Node "<<i<<" : ";
+        // for(int j=0;j< nearestDistances.size();j++) {
+        //     cout<<nearestDistances[j]<<" ";
+        // }
+        // cout<<endl;
 
-        unordered_map<double, int> duplicateCounts = countDuplicates(distances);
+        for (const auto& targetValue : nearestDistances) {
+            double result = findValueAtIndex2(database, targetValue, i);
 
-        for (const auto& entry : duplicateCounts) {
-            if (entry.second > 1) {
-                number_of_duplicates = entry.second - 1;
-                 distances.resize(k+number_of_duplicates);
+            if (result != -1.0) {
+                if (hasDuplicate(nearestDistances)){
+                    duplicateIndex = findValueDuplicates(database, nearestDistances);
+
+                    for(const auto& duplicate : duplicateIndex ){
+                        if (graph[i].size() < nearestDistances.size()){
+                            graph[i].push_back(duplicate);
+                        }
+                    }             
+                } else {
+                        graph[i].push_back(result);
+                }
+            } else {
+                cout << "Target value " << targetValue << " not found." << endl;
             }
         }
-    } else {
-        // cout << "There are no duplicate values." << endl;
-        if (distances.size() > k) {
-            distances.resize(k);
-        }
-    }
 
-    return distances;
+    }
 }
 
 vector<bool> calculatingNDF(const Graph& graph){
@@ -202,7 +297,7 @@ vector<bool> calculatingNDF(const Graph& graph){
         int size_knn = graph[i].size();
         
         int value_to_count = i;
-        int count_rknn = 0;
+        count_rknn = 0;
         for (const auto& inner_vec : graph) {
             for (const auto& value : inner_vec) {
                 if (value == value_to_count) {
@@ -210,12 +305,10 @@ vector<bool> calculatingNDF(const Graph& graph){
                 }
             }
         } 
-        // cout << "Value " << value_to_count << " appears " << count_rknn << " times in nested vector" << endl;
 
         double ndf;
         ndf = count_rknn/size_knn;
          if( ndf >= 1){
-            // cout<<"Point "<<i<<" is core point"<< endl;
             corePoint[i] = true;
          }
     }
@@ -223,82 +316,17 @@ vector<bool> calculatingNDF(const Graph& graph){
     return corePoint;
 }
 
-// Builds a graph based on the NBC algorithm
-void buildGraph(const vector<DataPoint>& data, int k, Graph& graph) {
-    vector<DataPoint> norm_data = normalizeData(data);
-
-    int n = norm_data.size();
-    // Graph represents the KNN value connected into the source points
-    graph.resize(n);
-
-
-    // Normal Euclidean Distance
-    vector<tuple<int, int, double>> database;
-
-    //create a distance database with source and destination point
-    for (int i = 0; i < n; i++) {
-        for (int j = i + 1; j < n; j++) {
-            double d = distanceVectorPair(norm_data[i], norm_data[j]);
-            database.push_back(make_tuple(i, j, d));
-        }
-    }
-
-    vector<double> nearestDistances;
-    vector<int> duplicateIndex;
-
-    for (int i = 0; i < n; i++) {
-            pair<double, double> targetPoint;
-            DataPoint target_data = norm_data[i];
-
-            for (const auto& pair : target_data) {
-                targetPoint = make_pair(pair.first, pair.second);
-            }
-
-            nearestDistances = findNearestDistances(norm_data, targetPoint, k);
-
-            // Print the nearest distance
-            // cout<<"---------------"<<i<<"----------------"<<endl;
-            // for (const auto& pair : nearestDistances) {
-            //     cout<<"Nearest Distance : "<<pair<<endl;
-            // }
-            // cout<<"--------------------------------"<<endl;
-
-
-            for (const auto& targetValue : nearestDistances) {
-                double result = findValueAtIndex2(database, targetValue, i);
-                if (result != -1.0) {
-
-                    if (hasDuplicate(nearestDistances)){
-                        duplicateIndex = findValueDuplicates(database, nearestDistances);
-
-                        for(const auto& duplicate : duplicateIndex ){
-                            if (graph[i].size() < nearestDistances.size()){
-                                graph[i].push_back(duplicate);
-                            }
-                        }             
-                    } else {
-                         graph[i].push_back(result);
-                    }
-                } else {
-                    cout << "Target value " << targetValue << " not found." << endl;
-                }
-            }
-    }
-}
-
 // Assigns data points to clusters based on the graph
 void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
 
-    // // Visualize the graph
-    // for(int l=0; l<= graph.size(); l++){
-    //     cout<<"Node number "<<l<<" : ";
-    //     for(int m=0; m<graph[l].size(); m++){
-    //         cout<<graph[l][m]<<", " ;
+    // for(int i=0; i<graph.size();i++){
+    //     cout<<"Node "<<i<<" : ";
+    //     for(int j=0;j<graph[0].size();j++){
+    //         cout<<" "<<graph[i][j]<<", ";
     //     }
-    //     cout<< endl;
+    //     cout<<endl;
     // }
 
-    // Clustering process
     int n = graph.size();
 
     // Marks whether the point is a core point or not
@@ -312,7 +340,7 @@ void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
     clusters.resize(n);
 
     corePoint = calculatingNDF(graph);
-    
+
     for (int i = 0; i < graph.size(); i++) {
         if (!visited[i]) {
             visited[i] = true;
@@ -320,8 +348,9 @@ void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
             // Process 1: Iterate from index 0 data until you find the core point
             seeds.push(i);
             while (!seeds.empty()) {
-            
+
                 int currentNode = seeds.front();
+
                 seeds.pop();
 
                 // Process 2: If you find a core point, give the data point the same cluster as the node being processed
@@ -329,18 +358,19 @@ void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
                     clusters[currentNode].insert(clusterID);
                 }
 
+                // cout<<"Node "<<currentNode<<" : Cluster "<<clusterID<<endl;
+
                 // Process 3: Fill in the seed with the KNN value of that point
                 vector<int> knn = graph[currentNode];
 
                 // Process 4: Take the first seed point that is being processed
                 for (int nextNode : knn) {
                     // Process 5: Repeat the second process and so on. until there are no more points in the seed
-                    if (!visited[nextNode]) {
+                    if (!visited[nextNode] || clusters[nextNode].empty()) {
                         visited[nextNode] = true;
                         seeds.push(nextNode);
                         clusters[nextNode].insert(clusterID);
                     }
-                    clusters[nextNode].insert(clusterID);
                 }
             }
 
@@ -348,6 +378,7 @@ void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
             clusterID++;
         }
     }
+    corePointStatus.assign(corePoint.begin(), corePoint.end());
 }
 
 // Function to calculate the Rand index
@@ -373,82 +404,130 @@ double calculateRandIndex(const vector<int>& clusterLabels, const vector<int>& t
     return randIndex;
 }
 
-int main() {
-    // Sample data
-    vector<DataPoint> data;
-    DataPoint data_point1, data_point2, data_point3, data_point4, data_point5, 
-    data_point6, data_point7, data_point8, data_point9, data_point10, 
-    data_point11, data_point12;
+int main(){
 
-    data_point1.push_back(pair<double, double>(4.2, 4.0));
-    data.push_back(data_point1);
-    data_point2.push_back(pair<double, double>(5.9, 3.9));
-    data.push_back(data_point2);
-    data_point3.push_back(pair<double, double>(2.8, 3.5));
-    data.push_back(data_point3);
-    data_point4.push_back(pair<double, double>(12.0, 1.3));
-    data.push_back(data_point4);
-    data_point5.push_back(pair<double, double>(10.0, 1.3));
-    data.push_back(data_point5);
-    data_point6.push_back(pair<double, double>(1.1, 3.0));
-    data.push_back(data_point6);
-    data_point7.push_back(pair<double, double>(0.0, 2.4));
-    data.push_back(data_point7);
-    data_point8.push_back(pair<double, double>(2.4, 2.0));
-    data.push_back(data_point8);
-    data_point9.push_back(pair<double, double>(11.5, 1.8));
-    data.push_back(data_point9);
-    data_point10.push_back(pair<double, double>(11.0, 1.0));
-    data.push_back(data_point10);
-    data_point11.push_back(pair<double, double>(0.9, 0.0));
-    data.push_back(data_point11);
-    data_point12.push_back(pair<double, double>(1.0, 1.5));
-    data.push_back(data_point12);
+    string filename = "/home/irawan/Documents/WUT/Data Mining/update_project/small_dataset.csv";
+    DataFromCSV dataFromCSV = readCSVFile(filename);
 
     // parameter for measure the computation time
     time_t start = clock();
 
-    // Parameters k point
     int k = 3;
-
-    // Clustering
     Graph graph;
-    buildGraph(data, k, graph);
+    buildGraph(dataFromCSV, k, graph);
     vector<Cluster> clusters;
     assignClusters(graph, clusters);
 
-    
     time_t end = clock();
     double elapsed = double(end - start)/ CLOCKS_PER_SEC;
-    
-    vector<int> pred_clust(data.size(), 0);
+
+    vector<int> pred_clust(dataFromCSV.size(), 0);
     vector<int> true_clust;
 
-    for(int i=0; i< clusters.size();i++) {
-        set<int> :: iterator iter;
-        for (iter = clusters[i].begin(); iter != clusters[i].end(); iter++) {
-            cout<< "Node "<<i<<" : cluster "<<*iter << endl;
-            pred_clust[i] = *iter;
+    // for(int i=0; i< clusters.size();i++) {
+    //     set<int> :: iterator iter;
+    //     for (iter = clusters[i].begin(); iter != clusters[i].end(); iter++) {
+    //         cout<< "Node "<<i<<" : cluster "<<*iter << endl;
+    //         pred_clust[i] = *iter;
+    //     }
+    // }
+
+    string clusterfile = "/home/irawan/Documents/WUT/Data Mining/update_project/small_dataset_clusters.csv";
+    DataFromCSV dataClusters = readCSVFile(clusterfile);
+
+    for(int i=0;i<dataClusters.size();i++){
+        for(int j=0;j<dataClusters[0].size();j++){
+            true_clust.push_back(dataClusters[i][j]);
         }
     }
-
-    true_clust.push_back(1); 
-    true_clust.push_back(1);
-    true_clust.push_back(1);
-    true_clust.push_back(2);
-    true_clust.push_back(2);
-    true_clust.push_back(1);
-    true_clust.push_back(1);
-    true_clust.push_back(1);
-    true_clust.push_back(2);
-    true_clust.push_back(2);
-    true_clust.push_back(1);
-    true_clust.push_back(1);
 
     //Using RAND index for the clustering evaluation
     double rand_index = calculateRandIndex(pred_clust, true_clust);
     cout<<"RAND index value : "<<rand_index<<endl;
     cout<<"Computation Time : "<<elapsed<<" seconds"<<endl;
 
+
+    ofstream outputFile1("OUT_NBC-EuclideanDistance_fname_D2_R10000_k3.txt"); 
+    ofstream outputFile2("STAT_NBC-EuclideanDistance_fname_D2_R10000_k3.txt");
+    ofstream outputFile3("k+NN_NBC-EuclideanDistance_fname_D2_R10000_k3.txt");
+
+    if (outputFile1.is_open()) { 
+        outputFile1<<"Data dimension : "<<dataFromCSV.size()<<" x "<<dataFromCSV[0].size()<<", ";
+        for(int i=0;i<dataFromCSV.size();i++) {
+            for(int j=0;j<dataFromCSV[0].size();j++){
+                vector<double> row = extractColumn(dataFromCSV, j);
+                outputFile1<<"Data ID : "<<j<<", Feature "<<i<<" : "<<row[j]<<" ,";
+            }
+            outputFile1<<endl;
+        }
+
+        for(int j=0;j<database.size();j++){
+            int source = get<0>(database[j]);
+            int dest = get<1>(database[j]);
+            double distance = get<2>(database[j]);
+            outputFile1<<"Data ID source : "<<source<<", Data ID destination : "<<dest<<", distance : "<<distance<<endl;
+        }
+
+        for(int i=0;i<dataFromCSV[0].size();i++) {
+            outputFile1<<"Data ID :"<<i<<", Status Core point : "<<corePointStatus[i]<<endl;
+        }
+
+        set<int> :: iterator iter;
+        for(int j=0;j<dataFromCSV[0].size();j++){
+            for (iter = clusters[j].begin(); iter != clusters[j].end(); iter++) {
+                outputFile1<< "Data ID "<<j<<" : cluster "<<*iter << endl;
+                pred_clust[j] = *iter;
+            }
+        }
+
+        outputFile1.close();
+        cout << "File OUT.txt created successfully." <<endl;
+    } else {
+        cout << "Failed to create file OUT.txt" <<endl;
+    }
+
+    if (outputFile2.is_open()) {
+       outputFile1<<"Data dimension : "<<dataFromCSV.size()<<" x "<<dataFromCSV[0].size()<<", ";
+        outputFile2<<"k parameter : "<<k<<endl;
+        outputFile2<<"Total runtime : "<<elapsed<<" seconds"<<endl;
+        outputFile2<<"RAND index value : "<<rand_index<<endl;
+
+        outputFile2.close();
+        cout << "File STAT.txt created successfully." <<endl;
+    } else {
+        cout << "Failed to create file STAT.txt" <<endl;
+    }
+
+    if (outputFile3.is_open()) {
+        for(int i=0; i< graph.size(); i++){
+             int size_knn = graph[i].size();
+
+            outputFile3<<"Data ID "<<i<<" KNN : ";
+            for(int j=0; j<graph[i].size(); j++){
+                outputFile3<<graph[i][j]<<", " ;
+            }
+            outputFile3<< endl;
+
+            count_rknn = 0;
+            for (const auto& inner_vec : graph) {
+                for (const auto& value : inner_vec) {
+                    if (value == i) {
+                        count_rknn++;
+                    }
+                }
+            } 
+            outputFile3<<"RkNN of Data ID  "<<i<<" : "<<count_rknn<<endl;
+
+            double ndf;
+            ndf = count_rknn/size_knn;
+            outputFile3<<"NDF of Data ID "<<i<<" : "<<ndf<<endl;
+        }
+
+        outputFile3.close();
+        cout << "File k+NN.txt created successfully." <<endl;
+    } else {
+        cout << "Failed to create file  k+NN.txt" <<endl;
+    }
+    
     return 0;
 }
