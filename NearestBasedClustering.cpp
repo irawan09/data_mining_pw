@@ -232,11 +232,11 @@ double findValueAtIndex2(const vector<tuple<int, int, double>> &data,
       {
         return get<0>(tuple);
       }
-      
+      // Return the value at index 1
       return destinationPoint;
     }
   }
-  
+  // Return a default value (-1.0) if target value is not found
   return -1.0;
 }
 
@@ -259,8 +259,10 @@ vector<int> findValueDuplicates(const vector<tuple<int, int, double>> &database,
     }
   }
 
+  // Use unique to remove adjacent duplicates
   auto last = unique(results.begin(), results.end());
 
+  // Erase the redundant elements from the vector
   results.erase(last, results.end());
 
   return results;
@@ -269,14 +271,6 @@ vector<int> findValueDuplicates(const vector<tuple<int, int, double>> &database,
 void buildGraph(const vector<vector<double>> &data, int k, Graph &graph)
 {
   vector<vector<double>> norm_data = normalizeData(data);
-
-  // for(int i=0;i<norm_data.size();i++){
-  //     cout<<"Normalize data index "<<i<<" ";
-  //     for(int j=0;j<norm_data[i].size();j++){
-  //         cout<<norm_data[i][j]<<" ";
-  //     }
-  //     cout<<endl;
-  // }
 
   size_t n = norm_data[0].size();
 
@@ -293,7 +287,6 @@ void buildGraph(const vector<vector<double>> &data, int k, Graph &graph)
         vector<double> row1 = extractColumn(norm_data, i);
         vector<double> row2 = extractColumn(norm_data, j);
         double d = calculateEuclideanDistance(row1, row2);
-        // cout<<"Distance of "<<i<<" towards "<<j<<" : "<<d<<endl;
         database.push_back(make_tuple(i, j, d));
       }
     }
@@ -386,15 +379,6 @@ vector<bool> calculatingNDF(const Graph &graph)
 // Assigns data points to clusters based on the graph
 void assignClusters(const Graph &graph, vector<vector<int>> &clusters)
 {
-
-  // for(int i=0; i<graph.size();i++){
-  //     cout<<"Node "<<i<<" : ";
-  //     for(int j=0;j<graph[0].size();j++){
-  //         cout<<" "<<graph[i][j]<<", ";
-  //     }
-  //     cout<<endl;
-  // }
-
   int n = graph.size();
 
   // Marks whether the point is a core point or not
