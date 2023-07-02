@@ -1,36 +1,1200 @@
-Data ID 0 KNN : 1, 2, 5, 
-RkNN of Data ID  0 : 2
-NDF of Data ID 0 : 0
-Data ID 1 KNN : 0, 2, 5, 
-RkNN of Data ID  1 : 2
-NDF of Data ID 1 : 0
-Data ID 2 KNN : 5, 0, 1, 
+Data ID 0 KNN : 123, 5, 1, 
+RkNN of Data ID  0 : 5
+NDF of Data ID 0 : 1
+Data ID 1 KNN : 82, 0, 108, 
+RkNN of Data ID  1 : 6
+NDF of Data ID 1 : 2
+Data ID 2 KNN : 218, 24, 202, 
 RkNN of Data ID  2 : 3
 NDF of Data ID 2 : 1
-Data ID 3 KNN : 8, 9, 4, 
+Data ID 3 KNN : 278, 397, 130, 
 RkNN of Data ID  3 : 3
 NDF of Data ID 3 : 1
-Data ID 4 KNN : 9, 8, 3, 
-RkNN of Data ID  4 : 3
+Data ID 4 KNN : 24, 18, 373, 
+RkNN of Data ID  4 : 4
 NDF of Data ID 4 : 1
-Data ID 5 KNN : 6, 2, 7, 
+Data ID 5 KNN : 108, 281, 0, 
 RkNN of Data ID  5 : 4
 NDF of Data ID 5 : 1
-Data ID 6 KNN : 7, 5, 11, 
-RkNN of Data ID  6 : 4
+Data ID 6 KNN : 84, 60, 11, 
+RkNN of Data ID  6 : 5
 NDF of Data ID 6 : 1
-Data ID 7 KNN : 11, 6, 10, 
-RkNN of Data ID  7 : 4
+Data ID 7 KNN : 74, 158, 365, 
+RkNN of Data ID  7 : 3
 NDF of Data ID 7 : 1
-Data ID 8 KNN : 3, 9, 4, 
-RkNN of Data ID  8 : 3
-NDF of Data ID 8 : 1
-Data ID 9 KNN : 8, 4, 3, 
-RkNN of Data ID  9 : 3
-NDF of Data ID 9 : 1
-Data ID 10 KNN : 11, 7, 6, 
+Data ID 8 KNN : 55, 51, 95, 
+RkNN of Data ID  8 : 6
+NDF of Data ID 8 : 2
+Data ID 9 KNN : 101, 111, 63, 
+RkNN of Data ID  9 : 6
+NDF of Data ID 9 : 2
+Data ID 10 KNN : 346, 188, 341, 
 RkNN of Data ID  10 : 2
 NDF of Data ID 10 : 0
-Data ID 11 KNN : 7, 10, 6, 
-RkNN of Data ID  11 : 3
-NDF of Data ID 11 : 1
+Data ID 11 KNN : 6, 84, 25, 
+RkNN of Data ID  11 : 1
+NDF of Data ID 11 : 0
+Data ID 12 KNN : 14, 347, 335, 
+RkNN of Data ID  12 : 1
+NDF of Data ID 12 : 0
+Data ID 13 KNN : 67, 42, 37, 
+RkNN of Data ID  13 : 1
+NDF of Data ID 13 : 0
+Data ID 14 KNN : 347, 127, 67, 
+RkNN of Data ID  14 : 4
+NDF of Data ID 14 : 1
+Data ID 15 KNN : 133, 366, 116, 
+RkNN of Data ID  15 : 1
+NDF of Data ID 15 : 0
+Data ID 16 KNN : 175, 44, 53, 
+RkNN of Data ID  16 : 3
+NDF of Data ID 16 : 1
+Data ID 17 KNN : 372, 138, 180, 
+RkNN of Data ID  17 : 1
+NDF of Data ID 17 : 0
+Data ID 18 KNN : 127, 373, 279, 
+RkNN of Data ID  18 : 4
+NDF of Data ID 18 : 1
+Data ID 19 KNN : 51, 66, 345, 
+RkNN of Data ID  19 : 1
+NDF of Data ID 19 : 0
+Data ID 20 KNN : 279, 25, 373, 
+RkNN of Data ID  20 : 3
+NDF of Data ID 20 : 1
+Data ID 21 KNN : 186, 64, 148, 
+RkNN of Data ID  21 : 4
+NDF of Data ID 21 : 1
+Data ID 22 KNN : 283, 40, 393, 
+RkNN of Data ID  22 : 1
+NDF of Data ID 22 : 0
+Data ID 23 KNN : 71, 87, 171, 
+RkNN of Data ID  23 : 1
+NDF of Data ID 23 : 0
+Data ID 24 KNN : 4, 218, 18, 
+RkNN of Data ID  24 : 4
+NDF of Data ID 24 : 1
+Data ID 25 KNN : 6, 279, 84, 
+RkNN of Data ID  25 : 4
+NDF of Data ID 25 : 1
+Data ID 26 KNN : 389, 395, 115, 
+RkNN of Data ID  26 : 4
+NDF of Data ID 26 : 1
+Data ID 27 KNN : 58, 132, 191, 
+RkNN of Data ID  27 : 5
+NDF of Data ID 27 : 1
+Data ID 28 KNN : 45, 331, 171, 
+RkNN of Data ID  28 : 2
+NDF of Data ID 28 : 0
+Data ID 29 KNN : 289, 129, 285, 
+RkNN of Data ID  29 : 4
+NDF of Data ID 29 : 1
+Data ID 30 KNN : 140, 41, 180, 
+RkNN of Data ID  30 : 2
+NDF of Data ID 30 : 0
+Data ID 31 KNN : 386, 392, 121, 
+RkNN of Data ID  31 : 3
+NDF of Data ID 31 : 1
+Data ID 32 KNN : 368, 387, 83, 
+RkNN of Data ID  32 : 3
+NDF of Data ID 32 : 1
+Data ID 33 KNN : 276, 380, 54, 
+RkNN of Data ID  33 : 0
+NDF of Data ID 33 : 0
+Data ID 34 KNN : 362, 352, 275, 
+RkNN of Data ID  34 : 4
+NDF of Data ID 34 : 1
+Data ID 35 KNN : 158, 44, 175, 
+RkNN of Data ID  35 : 7
+NDF of Data ID 35 : 2
+Data ID 36 KNN : 89, 276, 382, 
+RkNN of Data ID  36 : 0
+NDF of Data ID 36 : 0
+Data ID 37 KNN : 188, 53, 42, 
+RkNN of Data ID  37 : 1
+NDF of Data ID 37 : 0
+Data ID 38 KNN : 63, 46, 101, 
+RkNN of Data ID  38 : 1
+NDF of Data ID 38 : 0
+Data ID 39 KNN : 258, 282, 259, 
+RkNN of Data ID  39 : 4
+NDF of Data ID 39 : 1
+Data ID 40 KNN : 22, 112, 4, 
+RkNN of Data ID  40 : 2
+NDF of Data ID 40 : 0
+Data ID 41 KNN : 140, 30, 114, 
+RkNN of Data ID  41 : 3
+NDF of Data ID 41 : 1
+Data ID 42 KNN : 346, 170, 188, 
+RkNN of Data ID  42 : 6
+NDF of Data ID 42 : 2
+Data ID 43 KNN : 205, 353, 173, 
+RkNN of Data ID  43 : 5
+NDF of Data ID 43 : 1
+Data ID 44 KNN : 48, 35, 158, 
+RkNN of Data ID  44 : 3
+NDF of Data ID 44 : 1
+Data ID 45 KNN : 28, 171, 384, 
+RkNN of Data ID  45 : 4
+NDF of Data ID 45 : 1
+Data ID 46 KNN : 306, 9, 165, 
+RkNN of Data ID  46 : 4
+NDF of Data ID 46 : 1
+Data ID 47 KNN : 61, 211, 92, 
+RkNN of Data ID  47 : 3
+NDF of Data ID 47 : 1
+Data ID 48 KNN : 44, 341, 35, 
+RkNN of Data ID  48 : 1
+NDF of Data ID 48 : 0
+Data ID 49 KNN : 163, 201, 77, 
+RkNN of Data ID  49 : 2
+NDF of Data ID 49 : 0
+Data ID 50 KNN : 179, 64, 292, 
+RkNN of Data ID  50 : 1
+NDF of Data ID 50 : 0
+Data ID 51 KNN : 8, 95, 55, 
+RkNN of Data ID  51 : 5
+NDF of Data ID 51 : 1
+Data ID 52 KNN : 370, 285, 129, 
+RkNN of Data ID  52 : 1
+NDF of Data ID 52 : 0
+Data ID 53 KNN : 94, 16, 189, 
+RkNN of Data ID  53 : 4
+NDF of Data ID 53 : 1
+Data ID 54 KNN : 380, 276, 324, 
+RkNN of Data ID  54 : 5
+NDF of Data ID 54 : 1
+Data ID 55 KNN : 8, 167, 117, 
+RkNN of Data ID  55 : 4
+NDF of Data ID 55 : 1
+Data ID 56 KNN : 92, 251, 211, 
+RkNN of Data ID  56 : 4
+NDF of Data ID 56 : 1
+Data ID 57 KNN : 170, 188, 81, 
+RkNN of Data ID  57 : 2
+NDF of Data ID 57 : 0
+Data ID 58 KNN : 191, 27, 104, 
+RkNN of Data ID  58 : 4
+NDF of Data ID 58 : 1
+Data ID 59 KNN : 172, 8, 55, 
+RkNN of Data ID  59 : 3
+NDF of Data ID 59 : 1
+Data ID 60 KNN : 96, 6, 84, 
+RkNN of Data ID  60 : 4
+NDF of Data ID 60 : 1
+Data ID 61 KNN : 65, 47, 211, 
+RkNN of Data ID  61 : 4
+NDF of Data ID 61 : 1
+Data ID 62 KNN : 102, 164, 60, 
+RkNN of Data ID  62 : 1
+NDF of Data ID 62 : 0
+Data ID 63 KNN : 101, 81, 107, 
+RkNN of Data ID  63 : 5
+NDF of Data ID 63 : 1
+Data ID 64 KNN : 292, 186, 21, 
+RkNN of Data ID  64 : 7
+NDF of Data ID 64 : 2
+Data ID 65 KNN : 211, 251, 92, 
+RkNN of Data ID  65 : 2
+NDF of Data ID 65 : 0
+Data ID 66 KNN : 345, 172, 51, 
+RkNN of Data ID  66 : 2
+NDF of Data ID 66 : 0
+Data ID 67 KNN : 13, 279, 14, 
+RkNN of Data ID  67 : 3
+NDF of Data ID 67 : 1
+Data ID 68 KNN : 179, 354, 136, 
+RkNN of Data ID  68 : 0
+NDF of Data ID 68 : 0
+Data ID 69 KNN : 146, 134, 366, 
+RkNN of Data ID  69 : 2
+NDF of Data ID 69 : 0
+Data ID 70 KNN : 381, 88, 112, 
+RkNN of Data ID  70 : 5
+NDF of Data ID 70 : 1
+Data ID 71 KNN : 87, 2, 202, 
+RkNN of Data ID  71 : 3
+NDF of Data ID 71 : 1
+Data ID 72 KNN : 143, 91, 88, 
+RkNN of Data ID  72 : 4
+NDF of Data ID 72 : 1
+Data ID 73 KNN : 230, 371, 195, 
+RkNN of Data ID  73 : 1
+NDF of Data ID 73 : 0
+Data ID 74 KNN : 379, 7, 158, 
+RkNN of Data ID  74 : 3
+NDF of Data ID 74 : 1
+Data ID 75 KNN : 118, 152, 360, 
+RkNN of Data ID  75 : 1
+NDF of Data ID 75 : 0
+Data ID 76 KNN : 397, 130, 143, 
+RkNN of Data ID  76 : 1
+NDF of Data ID 76 : 0
+Data ID 77 KNN : 163, 304, 331, 
+RkNN of Data ID  77 : 4
+NDF of Data ID 77 : 1
+Data ID 78 KNN : 388, 399, 116, 
+RkNN of Data ID  78 : 4
+NDF of Data ID 78 : 1
+Data ID 79 KNN : 151, 290, 391, 
+RkNN of Data ID  79 : 3
+NDF of Data ID 79 : 1
+Data ID 80 KNN : 134, 135, 146, 
+RkNN of Data ID  80 : 4
+NDF of Data ID 80 : 1
+Data ID 81 KNN : 159, 170, 57, 
+RkNN of Data ID  81 : 5
+NDF of Data ID 81 : 1
+Data ID 82 KNN : 1, 175, 0, 
+RkNN of Data ID  82 : 1
+NDF of Data ID 82 : 0
+Data ID 83 KNN : 387, 360, 32, 
+RkNN of Data ID  83 : 4
+NDF of Data ID 83 : 1
+Data ID 84 KNN : 6, 60, 25, 
+RkNN of Data ID  84 : 4
+NDF of Data ID 84 : 1
+Data ID 85 KNN : 333, 61, 47, 
+RkNN of Data ID  85 : 1
+NDF of Data ID 85 : 0
+Data ID 86 KNN : 47, 61, 56, 
+RkNN of Data ID  86 : 0
+NDF of Data ID 86 : 0
+Data ID 87 KNN : 71, 2, 202, 
+RkNN of Data ID  87 : 3
+NDF of Data ID 87 : 1
+Data ID 88 KNN : 72, 91, 143, 
+RkNN of Data ID  88 : 4
+NDF of Data ID 88 : 1
+Data ID 89 KNN : 276, 41, 54, 
+RkNN of Data ID  89 : 2
+NDF of Data ID 89 : 0
+Data ID 90 KNN : 26, 115, 395, 
+RkNN of Data ID  90 : 0
+NDF of Data ID 90 : 0
+Data ID 91 KNN : 143, 287, 72, 
+RkNN of Data ID  91 : 5
+NDF of Data ID 91 : 1
+Data ID 92 KNN : 251, 56, 211, 
+RkNN of Data ID  92 : 5
+NDF of Data ID 92 : 1
+Data ID 93 KNN : 196, 277, 103, 
+RkNN of Data ID  93 : 1
+NDF of Data ID 93 : 0
+Data ID 94 KNN : 189, 53, 396, 
+RkNN of Data ID  94 : 4
+NDF of Data ID 94 : 1
+Data ID 95 KNN : 51, 184, 8, 
+RkNN of Data ID  95 : 2
+NDF of Data ID 95 : 0
+Data ID 96 KNN : 60, 35, 102, 
+RkNN of Data ID  96 : 2
+NDF of Data ID 96 : 0
+Data ID 97 KNN : 98, 352, 154, 
+RkNN of Data ID  97 : 6
+NDF of Data ID 97 : 2
+Data ID 98 KNN : 97, 352, 154, 
+RkNN of Data ID  98 : 7
+NDF of Data ID 98 : 2
+Data ID 99 KNN : 398, 278, 390, 
+RkNN of Data ID  99 : 4
+NDF of Data ID 99 : 1
+Data ID 100 KNN : 156, 106, 57, 
+RkNN of Data ID  100 : 1
+NDF of Data ID 100 : 0
+Data ID 101 KNN : 63, 111, 9, 
+RkNN of Data ID  101 : 4
+NDF of Data ID 101 : 1
+Data ID 102 KNN : 158, 164, 62, 
+RkNN of Data ID  102 : 4
+NDF of Data ID 102 : 1
+Data ID 103 KNN : 39, 196, 125, 
+RkNN of Data ID  103 : 4
+NDF of Data ID 103 : 1
+Data ID 104 KNN : 27, 58, 132, 
+RkNN of Data ID  104 : 4
+NDF of Data ID 104 : 1
+Data ID 105 KNN : 150, 132, 27, 
+RkNN of Data ID  105 : 2
+NDF of Data ID 105 : 0
+Data ID 106 KNN : 340, 188, 341, 
+RkNN of Data ID  106 : 4
+NDF of Data ID 106 : 1
+Data ID 107 KNN : 63, 81, 159, 
+RkNN of Data ID  107 : 2
+NDF of Data ID 107 : 0
+Data ID 108 KNN : 5, 164, 1, 
+RkNN of Data ID  108 : 3
+NDF of Data ID 108 : 1
+Data ID 109 KNN : 46, 331, 306, 
+RkNN of Data ID  109 : 0
+NDF of Data ID 109 : 0
+Data ID 110 KNN : 385, 122, 115, 
+RkNN of Data ID  110 : 2
+NDF of Data ID 110 : 0
+Data ID 111 KNN : 101, 9, 63, 
+RkNN of Data ID  111 : 3
+NDF of Data ID 111 : 1
+Data ID 112 KNN : 195, 371, 126, 
+RkNN of Data ID  112 : 3
+NDF of Data ID 112 : 1
+Data ID 113 KNN : 162, 110, 385, 
+RkNN of Data ID  113 : 0
+NDF of Data ID 113 : 0
+Data ID 114 KNN : 120, 152, 157, 
+RkNN of Data ID  114 : 5
+NDF of Data ID 114 : 1
+Data ID 115 KNN : 385, 78, 26, 
+RkNN of Data ID  115 : 6
+NDF of Data ID 115 : 2
+Data ID 116 KNN : 78, 394, 15, 
+RkNN of Data ID  116 : 3
+NDF of Data ID 116 : 1
+Data ID 117 KNN : 55, 8, 139, 
+RkNN of Data ID  117 : 1
+NDF of Data ID 117 : 0
+Data ID 118 KNN : 75, 157, 152, 
+RkNN of Data ID  118 : 1
+NDF of Data ID 118 : 0
+Data ID 119 KNN : 148, 21, 64, 
+RkNN of Data ID  119 : 1
+NDF of Data ID 119 : 0
+Data ID 120 KNN : 114, 150, 157, 
+RkNN of Data ID  120 : 3
+NDF of Data ID 120 : 1
+Data ID 121 KNN : 291, 344, 386, 
+RkNN of Data ID  121 : 4
+NDF of Data ID 121 : 1
+Data ID 122 KNN : 394, 385, 78, 
+RkNN of Data ID  122 : 4
+NDF of Data ID 122 : 1
+Data ID 123 KNN : 0, 1, 5, 
+RkNN of Data ID  123 : 2
+NDF of Data ID 123 : 0
+Data ID 124 KNN : 273, 142, 377, 
+RkNN of Data ID  124 : 3
+NDF of Data ID 124 : 1
+Data ID 125 KNN : 284, 103, 39, 
+RkNN of Data ID  125 : 2
+NDF of Data ID 125 : 0
+Data ID 126 KNN : 371, 287, 195, 
+RkNN of Data ID  126 : 5
+NDF of Data ID 126 : 1
+Data ID 127 KNN : 18, 279, 373, 
+RkNN of Data ID  127 : 2
+NDF of Data ID 127 : 0
+Data ID 128 KNN : 153, 137, 359, 
+RkNN of Data ID  128 : 2
+NDF of Data ID 128 : 0
+Data ID 129 KNN : 29, 289, 285, 
+RkNN of Data ID  129 : 4
+NDF of Data ID 129 : 1
+Data ID 130 KNN : 99, 390, 397, 
+RkNN of Data ID  130 : 5
+NDF of Data ID 130 : 1
+Data ID 131 KNN : 154, 97, 98, 
+RkNN of Data ID  131 : 1
+NDF of Data ID 131 : 0
+Data ID 132 KNN : 27, 104, 58, 
+RkNN of Data ID  132 : 6
+NDF of Data ID 132 : 2
+Data ID 133 KNN : 366, 399, 388, 
+RkNN of Data ID  133 : 4
+NDF of Data ID 133 : 1
+Data ID 134 KNN : 146, 80, 135, 
+RkNN of Data ID  134 : 4
+NDF of Data ID 134 : 1
+Data ID 135 KNN : 369, 192, 168, 
+RkNN of Data ID  135 : 8
+NDF of Data ID 135 : 2
+Data ID 136 KNN : 179, 137, 187, 
+RkNN of Data ID  136 : 2
+NDF of Data ID 136 : 0
+Data ID 137 KNN : 128, 172, 178, 
+RkNN of Data ID  137 : 3
+NDF of Data ID 137 : 1
+Data ID 138 KNN : 180, 177, 161, 
+RkNN of Data ID  138 : 5
+NDF of Data ID 138 : 1
+Data ID 139 KNN : 392, 359, 31, 
+RkNN of Data ID  139 : 4
+NDF of Data ID 139 : 1
+Data ID 140 KNN : 41, 30, 138, 
+RkNN of Data ID  140 : 3
+NDF of Data ID 140 : 1
+Data ID 141 KNN : 382, 12, 149, 
+RkNN of Data ID  141 : 0
+NDF of Data ID 141 : 0
+Data ID 142 KNN : 377, 273, 124, 
+RkNN of Data ID  142 : 4
+NDF of Data ID 142 : 1
+Data ID 143 KNN : 91, 287, 72, 
+RkNN of Data ID  143 : 5
+NDF of Data ID 143 : 1
+Data ID 144 KNN : 360, 114, 152, 
+RkNN of Data ID  144 : 0
+NDF of Data ID 144 : 0
+Data ID 145 KNN : 77, 216, 304, 
+RkNN of Data ID  145 : 1
+NDF of Data ID 145 : 0
+Data ID 146 KNN : 134, 80, 69, 
+RkNN of Data ID  146 : 6
+NDF of Data ID 146 : 2
+Data ID 147 KNN : 69, 366, 146, 
+RkNN of Data ID  147 : 0
+NDF of Data ID 147 : 0
+Data ID 148 KNN : 383, 119, 21, 
+RkNN of Data ID  148 : 3
+NDF of Data ID 148 : 1
+Data ID 149 KNN : 380, 54, 311, 
+RkNN of Data ID  149 : 3
+NDF of Data ID 149 : 1
+Data ID 150 KNN : 288, 105, 132, 
+RkNN of Data ID  150 : 3
+NDF of Data ID 150 : 1
+Data ID 151 KNN : 391, 79, 290, 
+RkNN of Data ID  151 : 2
+NDF of Data ID 151 : 0
+Data ID 152 KNN : 157, 360, 114, 
+RkNN of Data ID  152 : 6
+NDF of Data ID 152 : 2
+Data ID 153 KNN : 128, 137, 185, 
+RkNN of Data ID  153 : 1
+NDF of Data ID 153 : 0
+Data ID 154 KNN : 131, 97, 98, 
+RkNN of Data ID  154 : 4
+NDF of Data ID 154 : 1
+Data ID 155 KNN : 351, 349, 173, 
+RkNN of Data ID  155 : 5
+NDF of Data ID 155 : 1
+Data ID 156 KNN : 346, 106, 341, 
+RkNN of Data ID  156 : 1
+NDF of Data ID 156 : 0
+Data ID 157 KNN : 152, 114, 120, 
+RkNN of Data ID  157 : 4
+NDF of Data ID 157 : 1
+Data ID 158 KNN : 102, 35, 175, 
+RkNN of Data ID  158 : 8
+NDF of Data ID 158 : 2
+Data ID 159 KNN : 81, 170, 42, 
+RkNN of Data ID  159 : 4
+NDF of Data ID 159 : 1
+Data ID 160 KNN : 341, 35, 175, 
+RkNN of Data ID  160 : 1
+NDF of Data ID 160 : 0
+Data ID 161 KNN : 110, 385, 122, 
+RkNN of Data ID  161 : 2
+NDF of Data ID 161 : 0
+Data ID 162 KNN : 104, 132, 120, 
+RkNN of Data ID  162 : 1
+NDF of Data ID 162 : 0
+Data ID 163 KNN : 201, 77, 349, 
+RkNN of Data ID  163 : 4
+NDF of Data ID 163 : 1
+Data ID 164 KNN : 102, 158, 108, 
+RkNN of Data ID  164 : 3
+NDF of Data ID 164 : 1
+Data ID 165 KNN : 9, 111, 46, 
+RkNN of Data ID  165 : 1
+NDF of Data ID 165 : 0
+Data ID 166 KNN : 365, 7, 341, 
+RkNN of Data ID  166 : 1
+NDF of Data ID 166 : 0
+Data ID 167 KNN : 348, 34, 280, 
+RkNN of Data ID  167 : 2
+NDF of Data ID 167 : 0
+Data ID 168 KNN : 369, 361, 135, 
+RkNN of Data ID  168 : 4
+NDF of Data ID 168 : 1
+Data ID 169 KNN : 344, 350, 121, 
+RkNN of Data ID  169 : 3
+NDF of Data ID 169 : 1
+Data ID 170 KNN : 81, 188, 42, 
+RkNN of Data ID  170 : 7
+NDF of Data ID 170 : 2
+Data ID 171 KNN : 45, 28, 384, 
+RkNN of Data ID  171 : 3
+NDF of Data ID 171 : 1
+Data ID 172 KNN : 51, 8, 59, 
+RkNN of Data ID  172 : 5
+NDF of Data ID 172 : 1
+Data ID 173 KNN : 353, 155, 43, 
+RkNN of Data ID  173 : 3
+NDF of Data ID 173 : 1
+Data ID 174 KNN : 350, 386, 169, 
+RkNN of Data ID  174 : 0
+NDF of Data ID 174 : 0
+Data ID 175 KNN : 16, 158, 35, 
+RkNN of Data ID  175 : 7
+NDF of Data ID 175 : 2
+Data ID 176 KNN : 282, 239, 29, 
+RkNN of Data ID  176 : 2
+NDF of Data ID 176 : 0
+Data ID 177 KNN : 180, 138, 161, 
+RkNN of Data ID  177 : 2
+NDF of Data ID 177 : 0
+Data ID 178 KNN : 185, 139, 359, 
+RkNN of Data ID  178 : 2
+NDF of Data ID 178 : 0
+Data ID 179 KNN : 50, 292, 64, 
+RkNN of Data ID  179 : 3
+NDF of Data ID 179 : 1
+Data ID 180 KNN : 177, 138, 140, 
+RkNN of Data ID  180 : 5
+NDF of Data ID 180 : 1
+Data ID 181 KNN : 125, 284, 103, 
+RkNN of Data ID  181 : 0
+NDF of Data ID 181 : 0
+Data ID 182 KNN : 342, 345, 59, 
+RkNN of Data ID  182 : 0
+NDF of Data ID 182 : 0
+Data ID 183 KNN : 23, 71, 87, 
+RkNN of Data ID  183 : 0
+NDF of Data ID 183 : 0
+Data ID 184 KNN : 363, 34, 355, 
+RkNN of Data ID  184 : 2
+NDF of Data ID 184 : 0
+Data ID 185 KNN : 178, 139, 359, 
+RkNN of Data ID  185 : 2
+NDF of Data ID 185 : 0
+Data ID 186 KNN : 21, 64, 383, 
+RkNN of Data ID  186 : 3
+NDF of Data ID 186 : 1
+Data ID 187 KNN : 136, 76, 130, 
+RkNN of Data ID  187 : 1
+NDF of Data ID 187 : 0
+Data ID 188 KNN : 170, 106, 42, 
+RkNN of Data ID  188 : 7
+NDF of Data ID 188 : 2
+Data ID 189 KNN : 396, 94, 1, 
+RkNN of Data ID  189 : 4
+NDF of Data ID 189 : 1
+Data ID 190 KNN : 195, 126, 287, 
+RkNN of Data ID  190 : 2
+NDF of Data ID 190 : 0
+Data ID 191 KNN : 58, 27, 104, 
+RkNN of Data ID  191 : 3
+NDF of Data ID 191 : 1
+Data ID 192 KNN : 375, 135, 369, 
+RkNN of Data ID  192 : 3
+NDF of Data ID 192 : 1
+Data ID 193 KNN : 357, 346, 353, 
+RkNN of Data ID  193 : 2
+NDF of Data ID 193 : 0
+Data ID 194 KNN : 80, 134, 146, 
+RkNN of Data ID  194 : 0
+NDF of Data ID 194 : 0
+Data ID 195 KNN : 190, 287, 126, 
+RkNN of Data ID  195 : 7
+NDF of Data ID 195 : 2
+Data ID 196 KNN : 277, 338, 310, 
+RkNN of Data ID  196 : 4
+NDF of Data ID 196 : 1
+Data ID 197 KNN : 214, 298, 207, 
+RkNN of Data ID  197 : 4
+NDF of Data ID 197 : 1
+Data ID 198 KNN : 236, 247, 225, 
+RkNN of Data ID  198 : 0
+NDF of Data ID 198 : 0
+Data ID 199 KNN : 246, 238, 224, 
+RkNN of Data ID  199 : 4
+NDF of Data ID 199 : 1
+Data ID 200 KNN : 205, 301, 43, 
+RkNN of Data ID  200 : 3
+NDF of Data ID 200 : 1
+Data ID 201 KNN : 163, 351, 349, 
+RkNN of Data ID  201 : 4
+NDF of Data ID 201 : 1
+Data ID 202 KNN : 24, 40, 4, 
+RkNN of Data ID  202 : 3
+NDF of Data ID 202 : 1
+Data ID 203 KNN : 250, 206, 219, 
+RkNN of Data ID  203 : 3
+NDF of Data ID 203 : 1
+Data ID 204 KNN : 250, 203, 227, 
+RkNN of Data ID  204 : 2
+NDF of Data ID 204 : 0
+Data ID 205 KNN : 200, 301, 43, 
+RkNN of Data ID  205 : 4
+NDF of Data ID 205 : 1
+Data ID 206 KNN : 238, 224, 250, 
+RkNN of Data ID  206 : 5
+NDF of Data ID 206 : 1
+Data ID 207 KNN : 197, 298, 297, 
+RkNN of Data ID  207 : 5
+NDF of Data ID 207 : 1
+Data ID 208 KNN : 213, 204, 233, 
+RkNN of Data ID  208 : 3
+NDF of Data ID 208 : 1
+Data ID 209 KNN : 349, 155, 351, 
+RkNN of Data ID  209 : 1
+NDF of Data ID 209 : 0
+Data ID 210 KNN : 217, 242, 220, 
+RkNN of Data ID  210 : 4
+NDF of Data ID 210 : 1
+Data ID 211 KNN : 92, 251, 56, 
+RkNN of Data ID  211 : 6
+NDF of Data ID 211 : 2
+Data ID 212 KNN : 224, 204, 246, 
+RkNN of Data ID  212 : 1
+NDF of Data ID 212 : 0
+Data ID 213 KNN : 208, 221, 235, 
+RkNN of Data ID  213 : 5
+NDF of Data ID 213 : 1
+Data ID 214 KNN : 302, 197, 207, 
+RkNN of Data ID  214 : 3
+NDF of Data ID 214 : 1
+Data ID 215 KNN : 244, 221, 264, 
+RkNN of Data ID  215 : 0
+NDF of Data ID 215 : 0
+Data ID 216 KNN : 145, 77, 49, 
+RkNN of Data ID  216 : 1
+NDF of Data ID 216 : 0
+Data ID 217 KNN : 242, 210, 269, 
+RkNN of Data ID  217 : 5
+NDF of Data ID 217 : 1
+Data ID 218 KNN : 24, 2, 4, 
+RkNN of Data ID  218 : 2
+NDF of Data ID 218 : 0
+Data ID 219 KNN : 227, 250, 206, 
+RkNN of Data ID  219 : 3
+NDF of Data ID 219 : 1
+Data ID 220 KNN : 247, 269, 225, 
+RkNN of Data ID  220 : 5
+NDF of Data ID 220 : 1
+Data ID 221 KNN : 244, 213, 272, 
+RkNN of Data ID  221 : 3
+NDF of Data ID 221 : 1
+Data ID 222 KNN : 252, 261, 229, 
+RkNN of Data ID  222 : 4
+NDF of Data ID 222 : 1
+Data ID 223 KNN : 295, 297, 207, 
+RkNN of Data ID  223 : 1
+NDF of Data ID 223 : 0
+Data ID 224 KNN : 238, 206, 246, 
+RkNN of Data ID  224 : 5
+NDF of Data ID 224 : 1
+Data ID 225 KNN : 247, 256, 199, 
+RkNN of Data ID  225 : 6
+NDF of Data ID 225 : 2
+Data ID 226 KNN : 300, 335, 279, 
+RkNN of Data ID  226 : 2
+NDF of Data ID 226 : 0
+Data ID 227 KNN : 219, 250, 206, 
+RkNN of Data ID  227 : 3
+NDF of Data ID 227 : 1
+Data ID 228 KNN : 208, 213, 203, 
+RkNN of Data ID  228 : 0
+NDF of Data ID 228 : 0
+Data ID 229 KNN : 261, 249, 222, 
+RkNN of Data ID  229 : 4
+NDF of Data ID 229 : 1
+Data ID 230 KNN : 223, 73, 252, 
+RkNN of Data ID  230 : 1
+NDF of Data ID 230 : 0
+Data ID 231 KNN : 272, 235, 213, 
+RkNN of Data ID  231 : 2
+NDF of Data ID 231 : 0
+Data ID 232 KNN : 241, 262, 324, 
+RkNN of Data ID  232 : 5
+NDF of Data ID 232 : 1
+Data ID 233 KNN : 235, 271, 250, 
+RkNN of Data ID  233 : 4
+NDF of Data ID 233 : 1
+Data ID 234 KNN : 237, 210, 242, 
+RkNN of Data ID  234 : 2
+NDF of Data ID 234 : 0
+Data ID 235 KNN : 233, 271, 260, 
+RkNN of Data ID  235 : 5
+NDF of Data ID 235 : 1
+Data ID 236 KNN : 246, 238, 224, 
+RkNN of Data ID  236 : 2
+NDF of Data ID 236 : 0
+Data ID 237 KNN : 242, 217, 234, 
+RkNN of Data ID  237 : 2
+NDF of Data ID 237 : 0
+Data ID 238 KNN : 224, 206, 246, 
+RkNN of Data ID  238 : 5
+NDF of Data ID 238 : 1
+Data ID 239 KNN : 282, 176, 29, 
+RkNN of Data ID  239 : 3
+NDF of Data ID 239 : 1
+Data ID 240 KNN : 70, 283, 381, 
+RkNN of Data ID  240 : 3
+NDF of Data ID 240 : 1
+Data ID 241 KNN : 232, 262, 324, 
+RkNN of Data ID  241 : 3
+NDF of Data ID 241 : 1
+Data ID 242 KNN : 217, 237, 269, 
+RkNN of Data ID  242 : 4
+NDF of Data ID 242 : 1
+Data ID 243 KNN : 212, 225, 256, 
+RkNN of Data ID  243 : 0
+NDF of Data ID 243 : 0
+Data ID 244 KNN : 221, 213, 272, 
+RkNN of Data ID  244 : 2
+NDF of Data ID 244 : 0
+Data ID 245 KNN : 303, 100, 159, 
+RkNN of Data ID  245 : 1
+NDF of Data ID 245 : 0
+Data ID 246 KNN : 236, 199, 238, 
+RkNN of Data ID  246 : 6
+NDF of Data ID 246 : 2
+Data ID 247 KNN : 220, 269, 225, 
+RkNN of Data ID  247 : 4
+NDF of Data ID 247 : 1
+Data ID 248 KNN : 220, 225, 269, 
+RkNN of Data ID  248 : 0
+NDF of Data ID 248 : 0
+Data ID 249 KNN : 229, 261, 270, 
+RkNN of Data ID  249 : 4
+NDF of Data ID 249 : 1
+Data ID 250 KNN : 227, 219, 203, 
+RkNN of Data ID  250 : 7
+NDF of Data ID 250 : 2
+Data ID 251 KNN : 92, 211, 56, 
+RkNN of Data ID  251 : 4
+NDF of Data ID 251 : 1
+Data ID 252 KNN : 222, 229, 261, 
+RkNN of Data ID  252 : 3
+NDF of Data ID 252 : 1
+Data ID 253 KNN : 311, 232, 255, 
+RkNN of Data ID  253 : 0
+NDF of Data ID 253 : 0
+Data ID 254 KNN : 358, 315, 231, 
+RkNN of Data ID  254 : 4
+NDF of Data ID 254 : 1
+Data ID 255 KNN : 311, 232, 324, 
+RkNN of Data ID  255 : 2
+NDF of Data ID 255 : 0
+Data ID 256 KNN : 260, 225, 199, 
+RkNN of Data ID  256 : 3
+NDF of Data ID 256 : 1
+Data ID 257 KNN : 263, 270, 249, 
+RkNN of Data ID  257 : 2
+NDF of Data ID 257 : 0
+Data ID 258 KNN : 259, 39, 282, 
+RkNN of Data ID  258 : 3
+NDF of Data ID 258 : 1
+Data ID 259 KNN : 258, 282, 239, 
+RkNN of Data ID  259 : 4
+NDF of Data ID 259 : 1
+Data ID 260 KNN : 256, 199, 246, 
+RkNN of Data ID  260 : 2
+NDF of Data ID 260 : 0
+Data ID 261 KNN : 229, 249, 222, 
+RkNN of Data ID  261 : 4
+NDF of Data ID 261 : 1
+Data ID 262 KNN : 241, 232, 294, 
+RkNN of Data ID  262 : 3
+NDF of Data ID 262 : 1
+Data ID 263 KNN : 257, 208, 270, 
+RkNN of Data ID  263 : 1
+NDF of Data ID 263 : 0
+Data ID 264 KNN : 293, 214, 197, 
+RkNN of Data ID  264 : 3
+NDF of Data ID 264 : 1
+Data ID 265 KNN : 384, 358, 254, 
+RkNN of Data ID  265 : 0
+NDF of Data ID 265 : 0
+Data ID 266 KNN : 268, 306, 193, 
+RkNN of Data ID  266 : 1
+NDF of Data ID 266 : 0
+Data ID 267 KNN : 332, 234, 210, 
+RkNN of Data ID  267 : 0
+NDF of Data ID 267 : 0
+Data ID 268 KNN : 266, 264, 306, 
+RkNN of Data ID  268 : 2
+NDF of Data ID 268 : 0
+Data ID 269 KNN : 220, 247, 217, 
+RkNN of Data ID  269 : 5
+NDF of Data ID 269 : 1
+Data ID 270 KNN : 249, 257, 329, 
+RkNN of Data ID  270 : 4
+NDF of Data ID 270 : 1
+Data ID 271 KNN : 233, 235, 250, 
+RkNN of Data ID  271 : 2
+NDF of Data ID 271 : 0
+Data ID 272 KNN : 235, 231, 233, 
+RkNN of Data ID  272 : 3
+NDF of Data ID 272 : 1
+Data ID 273 KNN : 124, 142, 377, 
+RkNN of Data ID  273 : 3
+NDF of Data ID 273 : 1
+Data ID 274 KNN : 280, 362, 378, 
+RkNN of Data ID  274 : 3
+NDF of Data ID 274 : 1
+Data ID 275 KNN : 352, 98, 97, 
+RkNN of Data ID  275 : 4
+NDF of Data ID 275 : 1
+Data ID 276 KNN : 380, 54, 89, 
+RkNN of Data ID  276 : 5
+NDF of Data ID 276 : 1
+Data ID 277 KNN : 338, 196, 310, 
+RkNN of Data ID  277 : 3
+NDF of Data ID 277 : 1
+Data ID 278 KNN : 99, 398, 3, 
+RkNN of Data ID  278 : 5
+NDF of Data ID 278 : 1
+Data ID 279 KNN : 25, 20, 281, 
+RkNN of Data ID  279 : 7
+NDF of Data ID 279 : 2
+Data ID 280 KNN : 378, 274, 348, 
+RkNN of Data ID  280 : 4
+NDF of Data ID 280 : 1
+Data ID 281 KNN : 5, 74, 0, 
+RkNN of Data ID  281 : 3
+NDF of Data ID 281 : 1
+Data ID 282 KNN : 176, 239, 259, 
+RkNN of Data ID  282 : 5
+NDF of Data ID 282 : 1
+Data ID 283 KNN : 393, 381, 70, 
+RkNN of Data ID  283 : 2
+NDF of Data ID 283 : 0
+Data ID 284 KNN : 39, 258, 259, 
+RkNN of Data ID  284 : 2
+NDF of Data ID 284 : 0
+Data ID 285 KNN : 377, 129, 289, 
+RkNN of Data ID  285 : 6
+NDF of Data ID 285 : 2
+Data ID 286 KNN : 374, 146, 135, 
+RkNN of Data ID  286 : 1
+NDF of Data ID 286 : 0
+Data ID 287 KNN : 91, 143, 195, 
+RkNN of Data ID  287 : 7
+NDF of Data ID 287 : 2
+Data ID 288 KNN : 150, 132, 105, 
+RkNN of Data ID  288 : 1
+NDF of Data ID 288 : 0
+Data ID 289 KNN : 29, 129, 285, 
+RkNN of Data ID  289 : 3
+NDF of Data ID 289 : 1
+Data ID 290 KNN : 79, 274, 391, 
+RkNN of Data ID  290 : 3
+NDF of Data ID 290 : 1
+Data ID 291 KNN : 121, 169, 386, 
+RkNN of Data ID  291 : 1
+NDF of Data ID 291 : 0
+Data ID 292 KNN : 64, 383, 186, 
+RkNN of Data ID  292 : 4
+NDF of Data ID 292 : 1
+Data ID 293 KNN : 264, 53, 94, 
+RkNN of Data ID  293 : 2
+NDF of Data ID 293 : 0
+Data ID 294 KNN : 332, 296, 307, 
+RkNN of Data ID  294 : 2
+NDF of Data ID 294 : 0
+Data ID 295 KNN : 297, 298, 6, 
+RkNN of Data ID  295 : 2
+NDF of Data ID 295 : 0
+Data ID 296 KNN : 307, 322, 217, 
+RkNN of Data ID  296 : 4
+NDF of Data ID 296 : 1
+Data ID 297 KNN : 295, 298, 207, 
+RkNN of Data ID  297 : 4
+NDF of Data ID 297 : 1
+Data ID 298 KNN : 297, 197, 302, 
+RkNN of Data ID  298 : 5
+NDF of Data ID 298 : 1
+Data ID 299 KNN : 327, 320, 308, 
+RkNN of Data ID  299 : 3
+NDF of Data ID 299 : 1
+Data ID 300 KNN : 226, 20, 279, 
+RkNN of Data ID  300 : 1
+NDF of Data ID 300 : 0
+Data ID 301 KNN : 306, 205, 200, 
+RkNN of Data ID  301 : 3
+NDF of Data ID 301 : 1
+Data ID 302 KNN : 214, 298, 207, 
+RkNN of Data ID  302 : 2
+NDF of Data ID 302 : 0
+Data ID 303 KNN : 245, 159, 107, 
+RkNN of Data ID  303 : 1
+NDF of Data ID 303 : 0
+Data ID 304 KNN : 351, 155, 43, 
+RkNN of Data ID  304 : 3
+NDF of Data ID 304 : 1
+Data ID 305 KNN : 94, 293, 396, 
+RkNN of Data ID  305 : 1
+NDF of Data ID 305 : 0
+Data ID 306 KNN : 301, 46, 9, 
+RkNN of Data ID  306 : 5
+NDF of Data ID 306 : 1
+Data ID 307 KNN : 296, 336, 322, 
+RkNN of Data ID  307 : 4
+NDF of Data ID 307 : 1
+Data ID 308 KNN : 327, 299, 320, 
+RkNN of Data ID  308 : 5
+NDF of Data ID 308 : 1
+Data ID 309 KNN : 38, 315, 254, 
+RkNN of Data ID  309 : 1
+NDF of Data ID 309 : 0
+Data ID 310 KNN : 70, 240, 339, 
+RkNN of Data ID  310 : 4
+NDF of Data ID 310 : 1
+Data ID 311 KNN : 255, 324, 380, 
+RkNN of Data ID  311 : 3
+NDF of Data ID 311 : 1
+Data ID 312 KNN : 343, 201, 351, 
+RkNN of Data ID  312 : 1
+NDF of Data ID 312 : 0
+Data ID 313 KNN : 330, 329, 326, 
+RkNN of Data ID  313 : 2
+NDF of Data ID 313 : 0
+Data ID 314 KNN : 321, 318, 330, 
+RkNN of Data ID  314 : 1
+NDF of Data ID 314 : 0
+Data ID 315 KNN : 305, 396, 189, 
+RkNN of Data ID  315 : 3
+NDF of Data ID 315 : 1
+Data ID 316 KNN : 321, 326, 308, 
+RkNN of Data ID  316 : 3
+NDF of Data ID 316 : 1
+Data ID 317 KNN : 320, 327, 308, 
+RkNN of Data ID  317 : 0
+NDF of Data ID 317 : 0
+Data ID 318 KNN : 336, 321, 330, 
+RkNN of Data ID  318 : 4
+NDF of Data ID 318 : 1
+Data ID 319 KNN : 49, 309, 45, 
+RkNN of Data ID  319 : 0
+NDF of Data ID 319 : 0
+Data ID 320 KNN : 327, 299, 308, 
+RkNN of Data ID  320 : 4
+NDF of Data ID 320 : 1
+Data ID 321 KNN : 330, 316, 318, 
+RkNN of Data ID  321 : 6
+NDF of Data ID 321 : 2
+Data ID 322 KNN : 296, 307, 336, 
+RkNN of Data ID  322 : 2
+NDF of Data ID 322 : 0
+Data ID 323 KNN : 314, 321, 318, 
+RkNN of Data ID  323 : 0
+NDF of Data ID 323 : 0
+Data ID 324 KNN : 241, 232, 262, 
+RkNN of Data ID  324 : 5
+NDF of Data ID 324 : 1
+Data ID 325 KNN : 93, 196, 103, 
+RkNN of Data ID  325 : 0
+NDF of Data ID 325 : 0
+Data ID 326 KNN : 316, 330, 321, 
+RkNN of Data ID  326 : 3
+NDF of Data ID 326 : 1
+Data ID 327 KNN : 299, 320, 308, 
+RkNN of Data ID  327 : 4
+NDF of Data ID 327 : 1
+Data ID 328 KNN : 337, 195, 287, 
+RkNN of Data ID  328 : 1
+NDF of Data ID 328 : 0
+Data ID 329 KNN : 313, 326, 270, 
+RkNN of Data ID  329 : 2
+NDF of Data ID 329 : 0
+Data ID 330 KNN : 321, 316, 313, 
+RkNN of Data ID  330 : 5
+NDF of Data ID 330 : 1
+Data ID 331 KNN : 200, 205, 43, 
+RkNN of Data ID  331 : 3
+NDF of Data ID 331 : 1
+Data ID 332 KNN : 294, 210, 296, 
+RkNN of Data ID  332 : 2
+NDF of Data ID 332 : 0
+Data ID 333 KNN : 61, 65, 85, 
+RkNN of Data ID  333 : 1
+NDF of Data ID 333 : 0
+Data ID 334 KNN : 240, 70, 310, 
+RkNN of Data ID  334 : 0
+NDF of Data ID 334 : 0
+Data ID 335 KNN : 347, 14, 226, 
+RkNN of Data ID  335 : 3
+NDF of Data ID 335 : 1
+Data ID 336 KNN : 318, 307, 220, 
+RkNN of Data ID  336 : 3
+NDF of Data ID 336 : 1
+Data ID 337 KNN : 252, 222, 328, 
+RkNN of Data ID  337 : 2
+NDF of Data ID 337 : 0
+Data ID 338 KNN : 277, 310, 240, 
+RkNN of Data ID  338 : 2
+NDF of Data ID 338 : 0
+Data ID 339 KNN : 88, 337, 72, 
+RkNN of Data ID  339 : 1
+NDF of Data ID 339 : 0
+Data ID 340 KNN : 106, 188, 170, 
+RkNN of Data ID  340 : 1
+NDF of Data ID 340 : 0
+Data ID 341 KNN : 160, 158, 175, 
+RkNN of Data ID  341 : 7
+NDF of Data ID 341 : 2
+Data ID 342 KNN : 172, 59, 345, 
+RkNN of Data ID  342 : 1
+NDF of Data ID 342 : 0
+Data ID 343 KNN : 201, 163, 312, 
+RkNN of Data ID  343 : 1
+NDF of Data ID 343 : 0
+Data ID 344 KNN : 169, 367, 350, 
+RkNN of Data ID  344 : 3
+NDF of Data ID 344 : 1
+Data ID 345 KNN : 66, 19, 172, 
+RkNN of Data ID  345 : 4
+NDF of Data ID 345 : 1
+Data ID 346 KNN : 42, 170, 10, 
+RkNN of Data ID  346 : 4
+NDF of Data ID 346 : 1
+Data ID 347 KNN : 14, 335, 67, 
+RkNN of Data ID  347 : 3
+NDF of Data ID 347 : 1
+Data ID 348 KNN : 364, 362, 34, 
+RkNN of Data ID  348 : 4
+NDF of Data ID 348 : 1
+Data ID 349 KNN : 155, 209, 351, 
+RkNN of Data ID  349 : 5
+NDF of Data ID 349 : 1
+Data ID 350 KNN : 367, 348, 344, 
+RkNN of Data ID  350 : 3
+NDF of Data ID 350 : 1
+Data ID 351 KNN : 155, 304, 349, 
+RkNN of Data ID  351 : 6
+NDF of Data ID 351 : 2
+Data ID 352 KNN : 98, 97, 275, 
+RkNN of Data ID  352 : 6
+NDF of Data ID 352 : 2
+Data ID 353 KNN : 173, 357, 9, 
+RkNN of Data ID  353 : 4
+NDF of Data ID 353 : 1
+Data ID 354 KNN : 3, 278, 190, 
+RkNN of Data ID  354 : 1
+NDF of Data ID 354 : 0
+Data ID 355 KNN : 352, 154, 97, 
+RkNN of Data ID  355 : 1
+NDF of Data ID 355 : 0
+Data ID 356 KNN : 368, 83, 387, 
+RkNN of Data ID  356 : 1
+NDF of Data ID 356 : 0
+Data ID 357 KNN : 193, 353, 268, 
+RkNN of Data ID  357 : 2
+NDF of Data ID 357 : 0
+Data ID 358 KNN : 254, 384, 315, 
+RkNN of Data ID  358 : 3
+NDF of Data ID 358 : 1
+Data ID 359 KNN : 139, 392, 31, 
+RkNN of Data ID  359 : 4
+NDF of Data ID 359 : 1
+Data ID 360 KNN : 152, 83, 387, 
+RkNN of Data ID  360 : 5
+NDF of Data ID 360 : 1
+Data ID 361 KNN : 168, 367, 364, 
+RkNN of Data ID  361 : 2
+NDF of Data ID 361 : 0
+Data ID 362 KNN : 34, 364, 275, 
+RkNN of Data ID  362 : 3
+NDF of Data ID 362 : 1
+Data ID 363 KNN : 184, 192, 80, 
+RkNN of Data ID  363 : 1
+NDF of Data ID 363 : 0
+Data ID 364 KNN : 352, 98, 275, 
+RkNN of Data ID  364 : 4
+NDF of Data ID 364 : 1
+Data ID 365 KNN : 166, 7, 341, 
+RkNN of Data ID  365 : 2
+NDF of Data ID 365 : 0
+Data ID 366 KNN : 133, 399, 388, 
+RkNN of Data ID  366 : 6
+NDF of Data ID 366 : 2
+Data ID 367 KNN : 364, 361, 98, 
+RkNN of Data ID  367 : 3
+NDF of Data ID 367 : 1
+Data ID 368 KNN : 32, 356, 387, 
+RkNN of Data ID  368 : 2
+NDF of Data ID 368 : 0
+Data ID 369 KNN : 168, 375, 135, 
+RkNN of Data ID  369 : 4
+NDF of Data ID 369 : 1
+Data ID 370 KNN : 52, 377, 285, 
+RkNN of Data ID  370 : 1
+NDF of Data ID 370 : 0
+Data ID 371 KNN : 126, 195, 287, 
+RkNN of Data ID  371 : 4
+NDF of Data ID 371 : 1
+Data ID 372 KNN : 17, 138, 180, 
+RkNN of Data ID  372 : 1
+NDF of Data ID 372 : 0
+Data ID 373 KNN : 18, 281, 20, 
+RkNN of Data ID  373 : 4
+NDF of Data ID 373 : 1
+Data ID 374 KNN : 135, 168, 286, 
+RkNN of Data ID  374 : 1
+NDF of Data ID 374 : 0
+Data ID 375 KNN : 192, 369, 135, 
+RkNN of Data ID  375 : 2
+NDF of Data ID 375 : 0
+Data ID 376 KNN : 10, 16, 175, 
+RkNN of Data ID  376 : 0
+NDF of Data ID 376 : 0
+Data ID 377 KNN : 285, 142, 273, 
+RkNN of Data ID  377 : 5
+NDF of Data ID 377 : 1
+Data ID 378 KNN : 280, 274, 348, 
+RkNN of Data ID  378 : 3
+NDF of Data ID 378 : 1
+Data ID 379 KNN : 74, 35, 96, 
+RkNN of Data ID  379 : 1
+NDF of Data ID 379 : 0
+Data ID 380 KNN : 54, 276, 149, 
+RkNN of Data ID  380 : 5
+NDF of Data ID 380 : 1
+Data ID 381 KNN : 70, 88, 91, 
+RkNN of Data ID  381 : 3
+NDF of Data ID 381 : 1
+Data ID 382 KNN : 142, 124, 149, 
+RkNN of Data ID  382 : 2
+NDF of Data ID 382 : 0
+Data ID 383 KNN : 148, 292, 64, 
+RkNN of Data ID  383 : 3
+NDF of Data ID 383 : 1
+Data ID 384 KNN : 358, 45, 254, 
+RkNN of Data ID  384 : 4
+NDF of Data ID 384 : 1
+Data ID 385 KNN : 115, 122, 78, 
+RkNN of Data ID  385 : 5
+NDF of Data ID 385 : 1
+Data ID 386 KNN : 31, 280, 121, 
+RkNN of Data ID  386 : 5
+NDF of Data ID 386 : 1
+Data ID 387 KNN : 83, 32, 360, 
+RkNN of Data ID  387 : 5
+NDF of Data ID 387 : 1
+Data ID 388 KNN : 399, 366, 133, 
+RkNN of Data ID  388 : 4
+NDF of Data ID 388 : 1
+Data ID 389 KNN : 395, 26, 115, 
+RkNN of Data ID  389 : 2
+NDF of Data ID 389 : 0
+Data ID 390 KNN : 99, 130, 398, 
+RkNN of Data ID  390 : 3
+NDF of Data ID 390 : 1
+Data ID 391 KNN : 151, 79, 290, 
+RkNN of Data ID  391 : 3
+NDF of Data ID 391 : 1
+Data ID 392 KNN : 167, 378, 386, 
+RkNN of Data ID  392 : 3
+NDF of Data ID 392 : 1
+Data ID 393 KNN : 371, 126, 112, 
+RkNN of Data ID  393 : 2
+NDF of Data ID 393 : 0
+Data ID 394 KNN : 122, 116, 191, 
+RkNN of Data ID  394 : 2
+NDF of Data ID 394 : 0
+Data ID 395 KNN : 389, 26, 115, 
+RkNN of Data ID  395 : 3
+NDF of Data ID 395 : 1
+Data ID 396 KNN : 189, 1, 123, 
+RkNN of Data ID  396 : 4
+NDF of Data ID 396 : 1
+Data ID 397 KNN : 130, 3, 278, 
+RkNN of Data ID  397 : 3
+NDF of Data ID 397 : 1
+Data ID 398 KNN : 99, 278, 390, 
+RkNN of Data ID  398 : 3
+NDF of Data ID 398 : 1
+Data ID 399 KNN : 388, 366, 133, 
+RkNN of Data ID  399 : 4
+NDF of Data ID 399 : 1
