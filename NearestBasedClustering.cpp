@@ -19,9 +19,6 @@ typedef vector<vector<double>> DataFromCSV;
 // A graph is represented as an adjacency list
 typedef vector< vector<int> > Graph;
 
-// A cluster is represented as a set of indices of data points
-// typedef vector<int> Cluster;
-
 // Normal Euclidean Distance database
 vector<tuple<int, int, double>> database;
 
