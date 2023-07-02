@@ -20,7 +20,7 @@ typedef vector<vector<double>> DataFromCSV;
 typedef vector< vector<int> > Graph;
 
 // A cluster is represented as a set of indices of data points
-typedef set<int> Cluster;
+// typedef vector<int> Cluster;
 
 // Normal Euclidean Distance database
 vector<tuple<int, int, double>> database;
@@ -141,8 +141,7 @@ vector<double> extractColumn(const vector<vector<double>>& data, size_t column_i
     return column;
 }
 
-vector<double> findNearestDistances(const vector<vector<double>>& data,
-                                         const vector<double>& targetPoint, size_t k) {
+vector<double> findNearestDistances(const vector<vector<double>>& data, const vector<double>& targetPoint, size_t k) {
     vector<double> distances;
 
     try {
@@ -317,7 +316,7 @@ vector<bool> calculatingNDF(const Graph& graph){
 }
 
 // Assigns data points to clusters based on the graph
-void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
+void assignClusters(const Graph& graph, vector<vector<int>>& clusters) {
 
     // for(int i=0; i<graph.size();i++){
     //     cout<<"Node "<<i<<" : ";
@@ -355,7 +354,9 @@ void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
 
                 // Process 2: If you find a core point, give the data point the same cluster as the node being processed
                 if (corePoint[currentNode]) {
-                    clusters[currentNode].insert(clusterID);
+                    if(clusters[currentNode].size() < 1){
+                        clusters[currentNode].push_back(clusterID);
+                    }
                 }
 
                 // cout<<"Node "<<currentNode<<" : Cluster "<<clusterID<<endl;
@@ -369,7 +370,9 @@ void assignClusters(const Graph& graph, vector<Cluster>& clusters) {
                     if (!visited[nextNode] || clusters[nextNode].empty()) {
                         visited[nextNode] = true;
                         seeds.push(nextNode);
-                        clusters[nextNode].insert(clusterID);
+                        if(clusters[nextNode].size() < 1){
+                            clusters[nextNode].push_back(clusterID);
+                        }
                     }
                 }
             }
@@ -406,7 +409,7 @@ double calculateRandIndex(const vector<int>& clusterLabels, const vector<int>& t
 
 int main(){
 
-    string filename = "/home/irawan/Documents/WUT/Data Mining/update_project/small_dataset.csv";
+    string filename = "/home/irawan/Documents/WUT/Data Mining/update_project/WholesaleCustomersData.csv";
     DataFromCSV dataFromCSV = readCSVFile(filename);
 
     // parameter for measure the computation time
@@ -415,7 +418,7 @@ int main(){
     int k = 3;
     Graph graph;
     buildGraph(dataFromCSV, k, graph);
-    vector<Cluster> clusters;
+    vector<vector<int>> clusters;
     assignClusters(graph, clusters);
 
     time_t end = clock();
@@ -427,17 +430,18 @@ int main(){
     ofstream results("results.txt"); 
 
     if (results.is_open()) {
-
-        for(int i=0; i< clusters.size();i++) {
-            set<int> :: iterator iter;
-            for (iter = clusters[i].begin(); iter != clusters[i].end(); iter++) {
-                results<<*iter << endl;
-                pred_clust[i] = *iter;
+        results<<"cluster"<<endl;
+        for(const auto& cluster : clusters) {
+            if (cluster.size() == 0){
+                results<<-1<<endl;
+            }
+            for(const auto& data : cluster) {
+                results<<data<<endl;
             }
         }
 
         results.close();
-        cout << "File OUT.txt created successfully." <<endl;
+        cout << "File Results.txt created successfully." <<endl;
     } else {
         cout << "Failed to create file OUT.txt" <<endl;
     }
@@ -455,7 +459,6 @@ int main(){
     double rand_index = calculateRandIndex(pred_clust, true_clust);
     cout<<"RAND index value : "<<rand_index<<endl;
     cout<<"Computation Time : "<<elapsed<<" seconds"<<endl;
-
 
     ofstream outputFile1("OUT_NBC-EuclideanDistance_fname_D2_R10000_k3.txt"); 
     ofstream outputFile2("STAT_NBC-EuclideanDistance_fname_D2_R10000_k3.txt");
@@ -482,11 +485,15 @@ int main(){
             outputFile1<<"Data ID :"<<i<<", Status Core point : "<<corePointStatus[i]<<endl;
         }
 
-        set<int> :: iterator iter;
-        for(int j=0;j<dataFromCSV[0].size();j++){
-            for (iter = clusters[j].begin(); iter != clusters[j].end(); iter++) {
-                outputFile1<< "Data ID "<<j<<" : cluster "<<*iter << endl;
-                pred_clust[j] = *iter;
+        int dataId=0;
+        for(const auto& cluster : clusters) {
+            if (cluster.size() == 0){
+                dataId++;
+                outputFile1<<"Data ID "<<dataId<<" : cluster "<<-1<<endl;
+            }
+            for(const auto& data : cluster) {
+                dataId++;
+                outputFile1<<"Data ID "<<dataId<<" : cluster "<<data<<endl;
             }
         }
 
