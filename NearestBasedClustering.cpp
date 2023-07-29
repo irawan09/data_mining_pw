@@ -64,6 +64,33 @@ vector<vector<double>> readCSVFile(const string &filename)
   return columns;
 }
 
+vector<double> extractColumn(const vector<vector<double>> &data,
+                             size_t column_index)
+{
+  vector<double> column;
+
+  if (!data.empty())
+  {
+    if (column_index < data[0].size())
+    {
+      for (const auto &row : data)
+      {
+        column.push_back(row[column_index]);
+      }
+    }
+    else
+    {
+      throw invalid_argument("Invalid column index");
+    }
+  }
+  else
+  {
+    throw invalid_argument("Empty dataset");
+  }
+
+  return column;
+}
+
 vector<vector<double>> normalizeData(const vector<vector<double>> &data)
 {
   size_t numColumns = data.size();
@@ -74,20 +101,22 @@ vector<vector<double>> normalizeData(const vector<vector<double>> &data)
 
   for (size_t i = 0; i < numColumns; i++)
   {
-    double magnitude = 0.0;
-
-    // Calculate the magnitude of the vector
-    for (size_t j = 0; j < numRows; j++)
-    {
-      magnitude += pow(data[i][j], 2);
-    }
-
-    magnitude = sqrt(magnitude);
-
     // Normalize each value in the column and convert to double
     for (size_t j = 0; j < numRows; j++)
     {
+      // Calculate the magnitude of the every row
+      double magnitude = 0.0;
+
+      vector<double> row_norm = extractColumn(data, j);
+      for (const auto& row :row_norm){
+        magnitude += pow(row, 2);
+      }
+
+      magnitude = sqrt(magnitude);
+
       normalizedColumns[i][j] = static_cast<double>(data[i][j]) / magnitude;
+
+      // cout << "Normalized Data : "<< normalizedColumns[i][j] << endl;
     }
   }
 
@@ -108,7 +137,7 @@ double calculateEuclideanDistance(const vector<double> &point1,
 
   for (size_t i = 0; i < numFeatures; i++)
   {
-    double diff = pow(point1[i], 2) - pow(point2[i], 2);
+    double diff = point1[i] - point2[i];
     distance += diff * diff;
   }
 
@@ -137,33 +166,6 @@ unordered_map<double, int> countDuplicates(const vector<double> &values)
     countMap[value]++;
   }
   return countMap;
-}
-
-vector<double> extractColumn(const vector<vector<double>> &data,
-                             size_t column_index)
-{
-  vector<double> column;
-
-  if (!data.empty())
-  {
-    if (column_index < data[0].size())
-    {
-      for (const auto &row : data)
-      {
-        column.push_back(row[column_index]);
-      }
-    }
-    else
-    {
-      throw invalid_argument("Invalid column index");
-    }
-  }
-  else
-  {
-    throw invalid_argument("Empty dataset");
-  }
-
-  return column;
 }
 
 vector<double> findNearestDistances(const vector<vector<double>> &data,
@@ -287,6 +289,7 @@ void buildGraph(const vector<vector<double>> &data, int k, Graph &graph)
         vector<double> row1 = extractColumn(norm_data, i);
         vector<double> row2 = extractColumn(norm_data, j);
         double d = calculateEuclideanDistance(row1, row2);
+        // cout<<"Distance : "<<d<<endl;
         database.push_back(make_tuple(i, j, d));
       }
     }
@@ -314,6 +317,8 @@ void buildGraph(const vector<vector<double>> &data, int k, Graph &graph)
     for (const auto &targetValue : nearestDistances)
     {
       double result = findValueAtIndex2(database, targetValue, i);
+
+      // cout << result << endl;
 
       if (result != -1.0)
       {
@@ -406,6 +411,8 @@ void assignClusters(const Graph &graph, vector<vector<int>> &clusters)
 
         int currentNode = seeds.front();
 
+        // cout << "Current Node : "<< currentNode << endl;
+
         seeds.pop();
 
         // Process 2: If you find a core point, give the data point the same
@@ -431,7 +438,11 @@ void assignClusters(const Graph &graph, vector<vector<int>> &clusters)
           if (!visited[nextNode] || clusters[nextNode].empty())
           {
             visited[nextNode] = true;
-            seeds.push(nextNode);
+
+            if (corePoint[nextNode]){
+              seeds.push(nextNode);
+            }
+            
             if (clusters[nextNode].size() < 1)
             {
               clusters[nextNode].push_back(clusterID);
@@ -490,7 +501,7 @@ int main()
 {
 
   string filename =
-      "/home/irawan/Documents/WUT/Data Mining/update_project/small_dataset.csv";
+      "/home/irawan/Documents/WUT/Data\ Mining/update_project/hcvdat0.csv";
   DataFromCSV dataFromCSV = readCSVFile(filename);
 
   // parameter for measure the computation time
